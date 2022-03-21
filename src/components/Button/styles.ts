@@ -42,6 +42,10 @@ const wrapperModifiers = {
 
 export const Wrapper = styled.button<WrapperProps>`
   ${({ theme, size, fullWidth, hasIcon }) => css`
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
     background: linear-gradient(
       178.59deg,
       #ff5f5f -14.51%,
@@ -55,8 +59,12 @@ export const Wrapper = styled.button<WrapperProps>`
     font-family: 'Poppins';
     cursor: pointer;
 
+    &:hover {
+      background: linear-gradient(180deg, #e35565 0%, #d958a6 50%);
+    }
+
     ${!!fullWidth && wrapperModifiers.fullWidth()}
     ${!!size && wrapperModifiers[size](theme)}
-      ${!!hasIcon && wrapperModifiers.withIcon(theme)};
+    ${!!hasIcon && wrapperModifiers.withIcon(theme)};
   `}
 `
