@@ -5,7 +5,7 @@ import Banner from '.'
 
 describe('<Banner />', () => {
   it('should render correctly', () => {
-    renderWithTheme(
+    const { container } = renderWithTheme(
       <Banner
         img="https://source.unsplash.com/user/willianjusten/1042x580"
         title="Defy death"
@@ -24,5 +24,7 @@ describe('<Banner />', () => {
     ).toBeInTheDocument()
 
     expect(screen.getByRole('img', { name: /Defy death/i })).toBeInTheDocument()
+
+    expect(container.firstChild).toMatchSnapshot()
   })
 })
