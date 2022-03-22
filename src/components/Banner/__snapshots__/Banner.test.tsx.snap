@@ -69,6 +69,10 @@ exports[`<Banner /> should render correctly 1`] = `
   font-weight: 600;
 }
 
+@media (max-width:1170px) {
+
+}
+
 @media (min-width:768px) {
   .c0 {
     box-shadow: 0 0.4rem 0.5rem 0 rgba(0,-0,-0,-0.2);
