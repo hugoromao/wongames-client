@@ -21,10 +21,6 @@ describe('<Container />', () => {
         max-width: 130rem;
         margin-left: auto;
         margin-right: auto;
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
         padding-left: calc(3.2rem / 2);
         padding-right: calc(3.2rem / 2);
       }
