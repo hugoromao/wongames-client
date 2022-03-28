@@ -4,6 +4,7 @@ import media from 'styled-media-query'
 export const Wrapper = styled.menu`
   ${({ theme }) => css`
     display: flex;
+    width: 100%;
     align-items: center;
     padding: ${theme.spacings.small} 0;
     position: relative;
