@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import * as S from './styles'
 
 import { Menu2 as MenuIcon } from '@styled-icons/remix-line/Menu2'
@@ -46,7 +47,9 @@ const Menu = ({ username }: MenuProps) => {
 
         {!username && (
           <MediaMatch greaterThan="medium">
-            <Button>Sign In</Button>
+            <Link href="/sign-in" passHref>
+              <Button as="a">Sign In</Button>
+            </Link>
           </MediaMatch>
         )}
       </S.MenuGroup>
@@ -68,13 +71,15 @@ const Menu = ({ username }: MenuProps) => {
 
         {!username && (
           <S.RegisterBox>
-            <Button fullWidth size="large">
-              Log in now
-            </Button>
+            <Link href="/sign-in" passHref>
+              <Button fullWidth size="large" as="a">
+                Log in Now
+              </Button>
+            </Link>
             <span>or</span>
-            <S.CreateAccount href="#" title="Sign Un">
-              Sign Up
-            </S.CreateAccount>
+            <Link href="/sign-up" passHref>
+              <S.CreateAccount title="Sign Up">Sign Up</S.CreateAccount>
+            </Link>
           </S.RegisterBox>
         )}
       </S.MenuFull>
