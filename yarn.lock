@@ -2915,7 +2915,7 @@
     "@babel/runtime" "^7.14.0"
     "@styled-icons/styled-icon" "^10.6.3"
 
-"@styled-icons/fa-brands@10.38.0":
+"@styled-icons/fa-brands@10.38.0", "@styled-icons/fa-brands@^10.38.0":
   version "10.38.0"
   resolved "https://registry.yarnpkg.com/@styled-icons/fa-brands/-/fa-brands-10.38.0.tgz#f4b6572c751409a62a3b5027e8d961e7dab7d33a"
   integrity sha512-zZzGkcshXIF55geFIpMzMLH6tSPzQeeFPFZ1RMrZ3TWBjUuquMx+vYFsO7kzq939X84gLjmpkJZsAP9QKJFvMg==
