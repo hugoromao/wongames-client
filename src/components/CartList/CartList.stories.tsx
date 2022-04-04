@@ -10,11 +10,6 @@ export default {
     items: mockItems,
     total: 'R$ 330,00'
   },
-  argTypes: {
-    items: {
-      type: ''
-    }
-  },
   parameters: {
     backgrounds: {
       default: 'won-dark'
