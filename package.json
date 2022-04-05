@@ -14,7 +14,8 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "postinstall": "husky install",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "schema:download": "apollo client:download-schema --endpoint=http://localhost:1337/graphql schema-temp.gql"
   },
   "lint-staged": {
     "src/**/*": [
@@ -23,6 +24,7 @@
     ]
   },
   "dependencies": {
+    "@apollo/client": "^3.5.10",
     "@styled-icons/boxicons-regular": "^10.38.0",
     "@styled-icons/boxicons-solid": "^10.38.0",
     "@styled-icons/fa-brands": "^10.38.0",
@@ -32,6 +34,7 @@
     "@styled-icons/material-sharp": "^10.34.0",
     "@styled-icons/material-twotone": "^10.34.0",
     "add": "^2.0.6",
+    "graphql": "^16.3.0",
     "next": "12.0.10",
     "next-pwa": "^5.3.1",
     "react": "17.0.2",
