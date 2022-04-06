@@ -234,6 +234,95 @@ input JSONFilterInput {
   between: [JSON]
 }
 
+input ComponentPageButtonInput {
+  id: ID
+  label: String
+  link: String
+}
+
+type ComponentPageButton {
+  id: ID!
+  label: String!
+  link: String!
+}
+
+enum ENUM_COMPONENTPAGEHIGHLIGHT_ALIGNMENT {
+  right
+  left
+}
+
+input ComponentPageHighlightInput {
+  id: ID
+  title: String
+  subtitle: String
+  background: ID
+  floatImage: ID
+  buttonLabel: String
+  buttonLink: String
+  alignment: ENUM_COMPONENTPAGEHIGHLIGHT_ALIGNMENT
+}
+
+type ComponentPageHighlight {
+  id: ID!
+  title: String!
+  subtitle: String!
+  background: UploadFileEntityResponse!
+  floatImage: UploadFileEntityResponse
+  buttonLabel: String!
+  buttonLink: String!
+  alignment: ENUM_COMPONENTPAGEHIGHLIGHT_ALIGNMENT
+}
+
+input ComponentPagePopularGamesInput {
+  id: ID
+  title: String
+  highlight: ComponentPageHighlightInput
+  games: [ID]
+}
+
+type ComponentPagePopularGames {
+  id: ID!
+  title: String!
+  highlight: ComponentPageHighlight
+  games(filters: GameFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): GameRelationResponseCollection
+}
+
+enum ENUM_COMPONENTPAGERIBBON_COLOR {
+  primary
+  secondary
+}
+
+enum ENUM_COMPONENTPAGERIBBON_SIZE {
+  small
+  normal
+}
+
+input ComponentPageRibbonInput {
+  id: ID
+  text: String
+  color: ENUM_COMPONENTPAGERIBBON_COLOR
+  size: ENUM_COMPONENTPAGERIBBON_SIZE
+}
+
+type ComponentPageRibbon {
+  id: ID!
+  text: String
+  color: ENUM_COMPONENTPAGERIBBON_COLOR
+  size: ENUM_COMPONENTPAGERIBBON_SIZE
+}
+
+input ComponentPageSectionInput {
+  id: ID
+  title: String
+  highlight: ComponentPageHighlightInput
+}
+
+type ComponentPageSection {
+  id: ID!
+  title: String
+  highlight: ComponentPageHighlight
+}
+
 input UploadFileFiltersInput {
   id: IDFilterInput
   name: StringFilterInput
@@ -476,6 +565,49 @@ type UsersPermissionsUserRelationResponseCollection {
   data: [UsersPermissionsUserEntity!]!
 }
 
+input BannerFiltersInput {
+  id: IDFilterInput
+  title: StringFilterInput
+  subtitle: StringFilterInput
+  createdAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+  and: [BannerFiltersInput]
+  or: [BannerFiltersInput]
+  not: BannerFiltersInput
+}
+
+input BannerInput {
+  image: ID
+  title: String
+  subtitle: String
+  button: ComponentPageButtonInput
+  ribbon: ComponentPageRibbonInput
+}
+
+type Banner {
+  image: UploadFileEntityResponse!
+  title: String!
+  subtitle: String!
+  button: ComponentPageButton
+  ribbon: ComponentPageRibbon
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type BannerEntity {
+  id: ID
+  attributes: Banner
+}
+
+type BannerEntityResponse {
+  data: BannerEntity
+}
+
+type BannerEntityResponseCollection {
+  data: [BannerEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
 input CategoryFiltersInput {
   id: IDFilterInput
   name: StringFilterInput
@@ -645,6 +777,31 @@ type GameRelationResponseCollection {
   data: [GameEntity!]!
 }
 
+input HomeInput {
+  newGames: ComponentPageSectionInput
+  upcomingGames: ComponentPageSectionInput
+  freeGames: ComponentPageSectionInput
+  popularGames: ComponentPagePopularGamesInput
+}
+
+type Home {
+  newGames: ComponentPageSection
+  upcomingGames: ComponentPageSection
+  freeGames: ComponentPageSection
+  popularGames: ComponentPagePopularGames
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type HomeEntity {
+  id: ID
+  attributes: Home
+}
+
+type HomeEntityResponse {
+  data: HomeEntity
+}
+
 input PlatformFiltersInput {
   id: IDFilterInput
   name: StringFilterInput
@@ -729,7 +886,7 @@ type PublisherEntityResponseCollection {
   meta: ResponseCollectionMeta!
 }
 
-union GenericMorph = UploadFile | I18NLocale | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Category | Developer | Game | Platform | Publisher
+union GenericMorph = ComponentPageButton | ComponentPageHighlight | ComponentPagePopularGames | ComponentPageRibbon | ComponentPageSection | UploadFile | I18NLocale | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Banner | Category | Developer | Game | Home | Platform | Publisher
 
 input FileInfoInput {
   name: String
@@ -802,12 +959,15 @@ type Query {
   usersPermissionsRoles(filters: UsersPermissionsRoleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsRoleEntityResponseCollection
   usersPermissionsUser(id: ID): UsersPermissionsUserEntityResponse
   usersPermissionsUsers(filters: UsersPermissionsUserFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UsersPermissionsUserEntityResponseCollection
+  banner(id: ID): BannerEntityResponse
+  banners(filters: BannerFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): BannerEntityResponseCollection
   category(id: ID): CategoryEntityResponse
   categories(filters: CategoryFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): CategoryEntityResponseCollection
   developer(id: ID): DeveloperEntityResponse
   developers(filters: DeveloperFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): DeveloperEntityResponseCollection
   game(id: ID): GameEntityResponse
   games(filters: GameFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): GameEntityResponseCollection
+  home: HomeEntityResponse
   platform(id: ID): PlatformEntityResponse
   platforms(filters: PlatformFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): PlatformEntityResponseCollection
   publisher(id: ID): PublisherEntityResponse
@@ -819,6 +979,9 @@ type Mutation {
   createUploadFile(data: UploadFileInput!): UploadFileEntityResponse
   updateUploadFile(id: ID!, data: UploadFileInput!): UploadFileEntityResponse
   deleteUploadFile(id: ID!): UploadFileEntityResponse
+  createBanner(data: BannerInput!): BannerEntityResponse
+  updateBanner(id: ID!, data: BannerInput!): BannerEntityResponse
+  deleteBanner(id: ID!): BannerEntityResponse
   createCategory(data: CategoryInput!): CategoryEntityResponse
   updateCategory(id: ID!, data: CategoryInput!): CategoryEntityResponse
   deleteCategory(id: ID!): CategoryEntityResponse
@@ -828,6 +991,8 @@ type Mutation {
   createGame(data: GameInput!): GameEntityResponse
   updateGame(id: ID!, data: GameInput!): GameEntityResponse
   deleteGame(id: ID!): GameEntityResponse
+  updateHome(data: HomeInput!): HomeEntityResponse
+  deleteHome: HomeEntityResponse
   createPlatform(data: PlatformInput!): PlatformEntityResponse
   updatePlatform(id: ID!, data: PlatformInput!): PlatformEntityResponse
   deletePlatform(id: ID!): PlatformEntityResponse

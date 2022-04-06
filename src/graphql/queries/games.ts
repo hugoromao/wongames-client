@@ -1,31 +1,18 @@
 import { gql } from '@apollo/client'
+import { GameFragment } from 'graphql/fragments/game'
 
 export const QUERY_GAMES = gql`
   query QueryGames($pagination: PaginationArg!) {
     games(pagination: $pagination) {
       data {
         attributes {
-          name
-          slug
-          cover {
-            data {
-              attributes {
-                url
-              }
-            }
-          }
-          developers {
-            data {
-              attributes {
-                name
-              }
-            }
-          }
-          price
+          ...GameFragment
         }
       }
     }
   }
+
+  ${GameFragment}
 `
 
 export const QUERY_GAME_BY_SLUG = gql`

@@ -27,10 +27,7 @@ export async function getStaticProps() {
         slug: game.attributes?.slug,
         developer: game.attributes?.developers?.data[0]?.attributes?.name || '',
         img: `http://localhost:1337${game.attributes?.cover?.data?.attributes?.url}`,
-        price: new Intl.NumberFormat('en', {
-          style: 'currency',
-          currency: 'USD'
-        }).format(game.attributes?.price || 0)
+        price: game.attributes?.price || 0
       })),
       filterItems: filterItemsMock
     }
