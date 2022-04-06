@@ -52,8 +52,8 @@ describe('<TextField />', () => {
     await waitFor(() => {
       expect(input).toHaveValue(text)
       expect(onInput).toHaveBeenCalledTimes(text.length)
+      expect(onInput).toHaveBeenCalledWith(text)
     })
-    expect(onInput).toHaveBeenCalledWith(text)
   })
 
   it('Does not changes its value when disabled', async () => {
