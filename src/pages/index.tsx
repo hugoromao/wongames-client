@@ -1,9 +1,7 @@
 import Home, { HomeTemplateProps } from 'templates/Home'
 
-import gamesMock from 'components/GameCardSlider/mock'
-import highlightsMock from 'components/Highlight/mock'
 import { initializeApollo } from 'utils/apollo'
-import { QueryHome } from 'graphql/generated/QueryHome'
+import { QueryHome, QueryHomeVariables } from 'graphql/generated/QueryHome'
 import { QUERY_HOME } from 'graphql/queries/home'
 
 export default function Index(props: HomeTemplateProps) {
@@ -12,9 +10,15 @@ export default function Index(props: HomeTemplateProps) {
 
 export async function getStaticProps() {
   const apolloClient = initializeApollo()
+  const TODAY = new Date().toISOString().slice(0, 10)
   const {
-    data: { banners, newGames }
-  } = await apolloClient.query<QueryHome>({ query: QUERY_HOME })
+    data: { banners, newGames, upcomingGames, freeGames, sections }
+  } = await apolloClient.query<QueryHome, QueryHomeVariables>({
+    query: QUERY_HOME,
+    variables: {
+      date: TODAY
+    }
+  })
 
   return {
     props: {
@@ -39,13 +43,86 @@ export async function getStaticProps() {
         img: `http://localhost:1337${game.attributes?.cover?.data?.attributes?.url}`,
         price: game.attributes?.price
       })),
-      mostPopularHighlight: highlightsMock,
-      mostPopularGames: gamesMock,
-      upcomingGames: gamesMock,
-      upcomingHighlight: highlightsMock,
-      upcomingMoreGames: gamesMock,
-      freeGames: gamesMock,
-      freeHighlight: highlightsMock
+      newGamesTitle: sections?.data?.attributes?.newGames?.title,
+      mostPopularGamesTitle: sections?.data?.attributes?.popularGames?.title,
+      mostPopularHighlight: {
+        title: sections?.data?.attributes?.popularGames?.highlight?.title || '',
+        subtitle:
+          sections?.data?.attributes?.popularGames?.highlight?.subtitle || '',
+        backgroundImage:
+          `http://localhost:1337${sections?.data?.attributes?.popularGames?.highlight?.background.data?.attributes?.url}` ||
+          '',
+        buttonLabel:
+          sections?.data?.attributes?.popularGames?.highlight?.buttonLabel ||
+          '',
+        buttonLink:
+          sections?.data?.attributes?.popularGames?.highlight?.buttonLink || '',
+        alignment:
+          sections?.data?.attributes?.popularGames?.highlight?.alignment ||
+          'right'
+      },
+      mostPopularGames:
+        sections?.data?.attributes?.popularGames?.games?.data.map((game) => ({
+          title: game.attributes?.name,
+          slug: game.attributes?.slug,
+          developer:
+            game.attributes?.developers?.data[0]?.attributes?.name || null,
+          img: `http://localhost:1337${game.attributes?.cover?.data?.attributes?.url}`,
+          price: game.attributes?.price
+        })),
+      upcomingGamesTitle: sections?.data?.attributes?.upcomingGames?.title,
+      upcomingGames: upcomingGames?.data.map((game) => ({
+        title: game.attributes?.name,
+        slug: game.attributes?.slug,
+        developer:
+          game.attributes?.developers?.data[0]?.attributes?.name || null,
+        img: `http://localhost:1337${game.attributes?.cover?.data?.attributes?.url}`,
+        price: game.attributes?.price
+      })),
+      upcomingHighlight: {
+        title:
+          sections?.data?.attributes?.upcomingGames?.highlight?.title || '',
+        subtitle:
+          sections?.data?.attributes?.upcomingGames?.highlight?.subtitle || '',
+        backgroundImage:
+          `http://localhost:1337${sections?.data?.attributes?.upcomingGames?.highlight?.background.data?.attributes?.url}` ||
+          '',
+        floatImage:
+          `http://localhost:1337${sections?.data?.attributes?.upcomingGames?.highlight?.floatImage?.data?.attributes?.url}` ||
+          '',
+        buttonLabel:
+          sections?.data?.attributes?.upcomingGames?.highlight?.buttonLabel ||
+          '',
+        buttonLink:
+          sections?.data?.attributes?.upcomingGames?.highlight?.buttonLink ||
+          '',
+        alignment:
+          sections?.data?.attributes?.upcomingGames?.highlight?.alignment ||
+          'right'
+      },
+      freeGamesTitle: sections?.data?.attributes?.freeGames?.title,
+      freeGames: freeGames?.data.map((game) => ({
+        title: game.attributes?.name,
+        slug: game.attributes?.slug,
+        developer:
+          game.attributes?.developers?.data[0]?.attributes?.name || null,
+        img: `http://localhost:1337${game.attributes?.cover?.data?.attributes?.url}`,
+        price: game.attributes?.price
+      })),
+      freeHighlight: {
+        title: sections?.data?.attributes?.freeGames?.highlight?.title || '',
+        subtitle:
+          sections?.data?.attributes?.freeGames?.highlight?.subtitle || '',
+        backgroundImage:
+          `http://localhost:1337${sections?.data?.attributes?.freeGames?.highlight?.background.data?.attributes?.url}` ||
+          '',
+        buttonLabel:
+          sections?.data?.attributes?.freeGames?.highlight?.buttonLabel || '',
+        buttonLink:
+          sections?.data?.attributes?.freeGames?.highlight?.buttonLink || '',
+        alignment:
+          sections?.data?.attributes?.freeGames?.highlight?.alignment || 'right'
+      }
     }
   }
 }
