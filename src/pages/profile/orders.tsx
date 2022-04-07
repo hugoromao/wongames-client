@@ -6,7 +6,6 @@ import mock from 'components/OrdersList/mock'
 export default function Orders({ items }: OrdersListProps) {
   return (
     <Profile>
-      {console.log(items)}
       <OrdersList items={items} />
     </Profile>
   )

@@ -886,7 +886,26 @@ type PublisherEntityResponseCollection {
   meta: ResponseCollectionMeta!
 }
 
-union GenericMorph = ComponentPageButton | ComponentPageHighlight | ComponentPagePopularGames | ComponentPageRibbon | ComponentPageSection | UploadFile | I18NLocale | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Banner | Category | Developer | Game | Home | Platform | Publisher
+input RecommendedInput {
+  section: ComponentPagePopularGamesInput
+}
+
+type Recommended {
+  section: ComponentPagePopularGames!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type RecommendedEntity {
+  id: ID
+  attributes: Recommended
+}
+
+type RecommendedEntityResponse {
+  data: RecommendedEntity
+}
+
+union GenericMorph = ComponentPageButton | ComponentPageHighlight | ComponentPagePopularGames | ComponentPageRibbon | ComponentPageSection | UploadFile | I18NLocale | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Banner | Category | Developer | Game | Home | Platform | Publisher | Recommended
 
 input FileInfoInput {
   name: String
@@ -972,6 +991,7 @@ type Query {
   platforms(filters: PlatformFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): PlatformEntityResponseCollection
   publisher(id: ID): PublisherEntityResponse
   publishers(filters: PublisherFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): PublisherEntityResponseCollection
+  recommended: RecommendedEntityResponse
   me: UsersPermissionsMe
 }
 
@@ -999,6 +1019,8 @@ type Mutation {
   createPublisher(data: PublisherInput!): PublisherEntityResponse
   updatePublisher(id: ID!, data: PublisherInput!): PublisherEntityResponse
   deletePublisher(id: ID!): PublisherEntityResponse
+  updateRecommended(data: RecommendedInput!): RecommendedEntityResponse
+  deleteRecommended: RecommendedEntityResponse
   upload(refId: ID, ref: String, field: String, info: FileInfoInput, file: Upload!): UploadFileEntityResponse!
   multipleUpload(refId: ID, ref: String, field: String, files: [Upload]!): [UploadFileEntityResponse]!
   updateFileInfo(id: ID!, info: FileInfoInput): UploadFileEntityResponse!

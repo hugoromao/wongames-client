@@ -1,6 +1,4 @@
 import Game, { GameTemplateProps } from 'templates/Game'
-import gamesMock from 'components/GameCardSlider/mock'
-import highlightMock from 'components/Highlight/mock'
 import { useRouter } from 'next/router'
 import { initializeApollo } from 'utils/apollo'
 import { QueryGames, QueryGamesVariables } from 'graphql/generated/QueryGames'
@@ -10,6 +8,13 @@ import {
   QueryGameBySlugVariables
 } from 'graphql/generated/QueryGameBySlug'
 import { GetStaticProps } from 'next'
+import { QUERY_RECOMMENDED } from 'graphql/queries/recommended'
+import { QueryRecommended } from 'graphql/generated/QueryRecommended'
+import {
+  QueryUpcoming,
+  QueryUpcomingVariables
+} from 'graphql/generated/QueryUpcoming'
+import { QUERY_UPCOMING } from 'graphql/queries/upcoming'
 
 const apolloClient = initializeApollo()
 
@@ -39,6 +44,7 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const apolloClient = initializeApollo()
   const { data } = await apolloClient.query<
     QueryGameBySlug,
     QueryGameBySlugVariables
@@ -54,6 +60,17 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   if (!data.games?.data.length) {
     return { notFound: true }
   }
+
+  const { data: upcoming } = await apolloClient.query<
+    QueryUpcoming,
+    QueryUpcomingVariables
+  >({ query: QUERY_UPCOMING })
+
+  const { data: recommendedQuery } = await apolloClient.query<QueryRecommended>(
+    {
+      query: QUERY_RECOMMENDED
+    }
+  )
 
   const game = data.games.data[0]
 
@@ -83,9 +100,48 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
           (category) => category.attributes?.name
         )
       },
-      upcomingGames: gamesMock,
-      upcomingHighlight: highlightMock,
-      recommendedGames: gamesMock
+      upcomingGames: upcoming.upcomingGames?.data.map((game) => ({
+        title: game.attributes?.name,
+        slug: game.attributes?.slug,
+        developer:
+          game.attributes?.developers?.data[0]?.attributes?.name || null,
+        img: `http://localhost:1337${game.attributes?.cover?.data?.attributes?.url}`,
+        price: game.attributes?.price
+      })),
+      upcomingHighlight: {
+        title:
+          upcoming.sections?.data?.attributes?.upcomingGames?.highlight
+            ?.title || '',
+        subtitle:
+          upcoming.sections?.data?.attributes?.upcomingGames?.highlight
+            ?.subtitle || '',
+        backgroundImage:
+          `http://localhost:1337${upcoming.sections?.data?.attributes?.upcomingGames?.highlight?.background.data?.attributes?.url}` ||
+          '',
+        floatImage:
+          `http://localhost:1337${upcoming.sections?.data?.attributes?.upcomingGames?.highlight?.floatImage?.data?.attributes?.url}` ||
+          '',
+        buttonLabel:
+          upcoming.sections?.data?.attributes?.upcomingGames?.highlight
+            ?.buttonLabel || '',
+        buttonLink:
+          upcoming.sections?.data?.attributes?.upcomingGames?.highlight
+            ?.buttonLink || '',
+        alignment:
+          upcoming.sections?.data?.attributes?.upcomingGames?.highlight
+            ?.alignment || 'right'
+      },
+      recommendedGames:
+        recommendedQuery.recommended?.data?.attributes?.section.games?.data.map(
+          (game) => ({
+            title: game.attributes?.name,
+            slug: game.attributes?.slug,
+            developer:
+              game.attributes?.developers?.data[0]?.attributes?.name || null,
+            img: `http://localhost:1337${game.attributes?.cover?.data?.attributes?.url}`,
+            price: game.attributes?.price
+          })
+        )
     }
   }
 }
