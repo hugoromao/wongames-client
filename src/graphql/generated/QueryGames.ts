@@ -3,8 +3,6 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-import { PaginationArg } from "./globalTypes";
-
 // ====================================================
 // GraphQL query operation: QueryGames
 // ====================================================
@@ -63,5 +61,6 @@ export interface QueryGames {
 }
 
 export interface QueryGamesVariables {
-  pagination: PaginationArg;
+  limit: number;
+  start: number;
 }

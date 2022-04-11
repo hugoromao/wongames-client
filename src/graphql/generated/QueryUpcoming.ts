@@ -124,7 +124,3 @@ export interface QueryUpcoming {
   upcomingGames: QueryUpcoming_upcomingGames | null;
   sections: QueryUpcoming_sections | null;
 }
-
-export interface QueryUpcomingVariables {
-  date: any;
-}

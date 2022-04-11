@@ -167,13 +167,6 @@ export interface IDFilterInput {
   between?: (string | null)[] | null;
 }
 
-export interface PaginationArg {
-  page?: number | null;
-  pageSize?: number | null;
-  start?: number | null;
-  limit?: number | null;
-}
-
 export interface PlatformFiltersInput {
   id?: IDFilterInput | null;
   name?: StringFilterInput | null;
