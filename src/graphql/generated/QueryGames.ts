@@ -3,6 +3,8 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
+import { GameFiltersInput } from "./globalTypes";
+
 // ====================================================
 // GraphQL query operation: QueryGames
 // ====================================================
@@ -63,4 +65,6 @@ export interface QueryGames {
 export interface QueryGamesVariables {
   limit: number;
   start: number;
+  filters?: GameFiltersInput | null;
+  sort?: string | null;
 }
