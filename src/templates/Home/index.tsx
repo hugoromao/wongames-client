@@ -67,7 +67,7 @@ const Home = ({
       buttonLabel: 'COMPRE AGORA',
       buttonLink: 'http://localhost:3000',
       img:
-        'https://gmedia.playstation.com/is/image/SIEPDC/spiderman-miles-morales-screenshot-04-disclaimer-en-01oct20?$2400px--t$',
+        'https://sm.ign.com/ign_br/game/m/marvels-sp/marvels-spider-man-miles-morales_du71.jpg',
       ribbon: 'Exclusivo',
       ribbonColor: 'primary',
       ribbonSize: 'normal'
