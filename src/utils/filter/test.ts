@@ -17,10 +17,11 @@ const queryString = {
 describe('parseQueryStringToWhere()', () => {
   it('should parse queryString to where format', () => {
     const parsedQuery = parseQueryStringToWhere({ queryString, filterItems })
+
     expect(parsedQuery).toStrictEqual({
-      price_lte: { lte: 100 },
-      platforms: { name: { contains: ['windows', 'linux'] } },
-      developers: { name: { contains: 'Rockstar Games' } }
+      price_lte: 100,
+      platforms: { name_contains: ['windows', 'linux'] },
+      developers: { name_contains: 'Rockstar Games' }
     })
   })
 })

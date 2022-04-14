@@ -24,7 +24,6 @@ const CartList = ({ items = [], total, hasButton = false }: CartListProps) => (
           <S.Total>{total}</S.Total>
 
           {hasButton && (
-            // eslint-disable-next-line @next/next/link-passhref
             <Link href="/cart">
               <Button as="a">Buy it now</Button>
             </Link>

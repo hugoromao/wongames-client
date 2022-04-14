@@ -26,6 +26,7 @@ export const ShowMoreButton = styled.div`
     font-weight: bold;
     cursor: pointer;
     color: ${theme.colors.white};
+
     > svg {
       color: ${theme.colors.primary};
     }

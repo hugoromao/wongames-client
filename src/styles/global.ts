@@ -1,11 +1,11 @@
 import {
   createGlobalStyle,
   css,
-  GlobalStyleComponent,
-  DefaultTheme
+  DefaultTheme,
+  GlobalStyleComponent
 } from 'styled-components'
 
-export type GlobalStylesProps = {
+type GlobalStylesProps = {
   removeBg?: boolean
 }
 
@@ -18,24 +18,26 @@ const GlobalStyles: GlobalStyleComponent<
     font-style: normal;
     font-weight: 300;
     font-display: swap;
-    src: local(''),
-        url('/fonts/poppins-v19-latin-300.woff2') format('woff2');
+    src: local('Poppins Light'), local('Poppins-Light'),
+        url('/fonts/poppins-v12-latin-300.woff2') format('woff2');
   }
+
   @font-face {
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: local(''),
-        url('/fonts/poppins-v19-latin-regular.woff2') format('woff2');
+    src: local('Poppins Regular'), local('Poppins-Regular'),
+        url('/fonts/poppins-v12-latin-regular.woff2') format('woff2');
   }
+
   @font-face {
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 600;
     font-display: swap;
-    src: local(''),
-        url('/fonts/poppins-v19-latin-600.woff2') format('woff2');
+    src: local('Poppins SemiBold'), local('Poppins-SemiBold'),
+        url('/fonts/poppins-v12-latin-600.woff2') format('woff2');
   }
 
   * {
@@ -65,7 +67,8 @@ const GlobalStyles: GlobalStyleComponent<
         background-color: ${theme.colors.mainBg};
       `}
     }
-  `}  
+  `}
+
 `
 
 export default GlobalStyles

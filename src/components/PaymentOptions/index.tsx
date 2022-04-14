@@ -1,9 +1,10 @@
-/* eslint-disable @next/next/no-img-element */
+import { useState } from 'react'
 import { Add, ShoppingCart } from '@styled-icons/material-outlined'
+
 import Button from 'components/Button'
 import Heading from 'components/Heading'
 import Radio from 'components/Radio'
-import { useState } from 'react'
+
 import * as S from './styles'
 
 export type PaymentOptionsProps = {
@@ -44,7 +45,7 @@ const PaymentOptions = ({ cards, handlePayment }: PaymentOptionsProps) => {
           ))}
 
           <S.AddCard role="button">
-            <Add size={22} /> Add a new credit card
+            <Add size={14} /> Add a new credit card
           </S.AddCard>
         </S.CardsList>
       </S.Body>
@@ -52,7 +53,6 @@ const PaymentOptions = ({ cards, handlePayment }: PaymentOptionsProps) => {
         <Button as="a" fullWidth minimal>
           Continue shopping
         </Button>
-
         <Button
           fullWidth
           icon={<ShoppingCart />}

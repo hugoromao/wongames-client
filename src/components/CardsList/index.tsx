@@ -1,13 +1,12 @@
-/* eslint-disable @next/next/no-img-element */
 import Heading from 'components/Heading'
 import { PaymentCard } from 'components/PaymentOptions'
 import * as S from './styles'
 
-export type CardListProps = {
+export type CardsListProps = {
   cards?: PaymentCard[]
 }
 
-const CardsList = ({ cards }: CardListProps) => (
+const CardsList = ({ cards }: CardsListProps) => (
   <>
     <Heading lineBottom color="black" size="small">
       My cards

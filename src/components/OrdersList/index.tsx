@@ -7,13 +7,13 @@ export type OrdersListProps = {
   items?: GameItemProps[]
 }
 
-const OrdersList = ({ items }: OrdersListProps) => (
+const OrdersList = ({ items = [] }: OrdersListProps) => (
   <S.Wrapper>
-    <Heading lineBottom lineColor="primary" color="black">
+    <Heading lineBottom lineColor="primary" color="black" size="small">
       My orders
     </Heading>
 
-    {items?.length ? (
+    {items.length ? (
       items.map((item) => <GameItem key={item.downloadLink} {...item} />)
     ) : (
       <Empty

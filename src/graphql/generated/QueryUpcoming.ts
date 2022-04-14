@@ -9,118 +9,63 @@ import { ENUM_COMPONENTPAGEHIGHLIGHT_ALIGNMENT } from "./globalTypes";
 // GraphQL query operation: QueryUpcoming
 // ====================================================
 
-export interface QueryUpcoming_upcomingGames_data_attributes_cover_data_attributes {
+export interface QueryUpcoming_upcomingGames_cover {
   __typename: "UploadFile";
   url: string;
 }
 
-export interface QueryUpcoming_upcomingGames_data_attributes_cover_data {
-  __typename: "UploadFileEntity";
-  attributes: QueryUpcoming_upcomingGames_data_attributes_cover_data_attributes | null;
-}
-
-export interface QueryUpcoming_upcomingGames_data_attributes_cover {
-  __typename: "UploadFileEntityResponse";
-  data: QueryUpcoming_upcomingGames_data_attributes_cover_data | null;
-}
-
-export interface QueryUpcoming_upcomingGames_data_attributes_developers_data_attributes {
+export interface QueryUpcoming_upcomingGames_developers {
   __typename: "Developer";
   name: string;
 }
 
-export interface QueryUpcoming_upcomingGames_data_attributes_developers_data {
-  __typename: "DeveloperEntity";
-  attributes: QueryUpcoming_upcomingGames_data_attributes_developers_data_attributes | null;
-}
-
-export interface QueryUpcoming_upcomingGames_data_attributes_developers {
-  __typename: "DeveloperRelationResponseCollection";
-  data: QueryUpcoming_upcomingGames_data_attributes_developers_data[];
-}
-
-export interface QueryUpcoming_upcomingGames_data_attributes {
+export interface QueryUpcoming_upcomingGames {
   __typename: "Game";
+  id: string;
   name: string;
   slug: string;
-  cover: QueryUpcoming_upcomingGames_data_attributes_cover | null;
-  developers: QueryUpcoming_upcomingGames_data_attributes_developers | null;
+  cover: QueryUpcoming_upcomingGames_cover | null;
+  developers: QueryUpcoming_upcomingGames_developers[];
   price: number;
 }
 
-export interface QueryUpcoming_upcomingGames_data {
-  __typename: "GameEntity";
-  attributes: QueryUpcoming_upcomingGames_data_attributes | null;
-}
-
-export interface QueryUpcoming_upcomingGames {
-  __typename: "GameEntityResponseCollection";
-  data: QueryUpcoming_upcomingGames_data[];
-}
-
-export interface QueryUpcoming_sections_data_attributes_upcomingGames_highlight_background_data_attributes {
+export interface QueryUpcoming_showcase_upcomingGames_highlight_background {
   __typename: "UploadFile";
   url: string;
 }
 
-export interface QueryUpcoming_sections_data_attributes_upcomingGames_highlight_background_data {
-  __typename: "UploadFileEntity";
-  attributes: QueryUpcoming_sections_data_attributes_upcomingGames_highlight_background_data_attributes | null;
-}
-
-export interface QueryUpcoming_sections_data_attributes_upcomingGames_highlight_background {
-  __typename: "UploadFileEntityResponse";
-  data: QueryUpcoming_sections_data_attributes_upcomingGames_highlight_background_data | null;
-}
-
-export interface QueryUpcoming_sections_data_attributes_upcomingGames_highlight_floatImage_data_attributes {
+export interface QueryUpcoming_showcase_upcomingGames_highlight_floatImage {
   __typename: "UploadFile";
   url: string;
 }
 
-export interface QueryUpcoming_sections_data_attributes_upcomingGames_highlight_floatImage_data {
-  __typename: "UploadFileEntity";
-  attributes: QueryUpcoming_sections_data_attributes_upcomingGames_highlight_floatImage_data_attributes | null;
-}
-
-export interface QueryUpcoming_sections_data_attributes_upcomingGames_highlight_floatImage {
-  __typename: "UploadFileEntityResponse";
-  data: QueryUpcoming_sections_data_attributes_upcomingGames_highlight_floatImage_data | null;
-}
-
-export interface QueryUpcoming_sections_data_attributes_upcomingGames_highlight {
+export interface QueryUpcoming_showcase_upcomingGames_highlight {
   __typename: "ComponentPageHighlight";
   title: string;
   subtitle: string;
-  background: QueryUpcoming_sections_data_attributes_upcomingGames_highlight_background;
-  floatImage: QueryUpcoming_sections_data_attributes_upcomingGames_highlight_floatImage | null;
+  background: QueryUpcoming_showcase_upcomingGames_highlight_background | null;
+  floatImage: QueryUpcoming_showcase_upcomingGames_highlight_floatImage | null;
   buttonLabel: string;
   buttonLink: string;
   alignment: ENUM_COMPONENTPAGEHIGHLIGHT_ALIGNMENT | null;
 }
 
-export interface QueryUpcoming_sections_data_attributes_upcomingGames {
+export interface QueryUpcoming_showcase_upcomingGames {
   __typename: "ComponentPageSection";
   title: string | null;
-  highlight: QueryUpcoming_sections_data_attributes_upcomingGames_highlight | null;
+  highlight: QueryUpcoming_showcase_upcomingGames_highlight | null;
 }
 
-export interface QueryUpcoming_sections_data_attributes {
+export interface QueryUpcoming_showcase {
   __typename: "Home";
-  upcomingGames: QueryUpcoming_sections_data_attributes_upcomingGames | null;
-}
-
-export interface QueryUpcoming_sections_data {
-  __typename: "HomeEntity";
-  attributes: QueryUpcoming_sections_data_attributes | null;
-}
-
-export interface QueryUpcoming_sections {
-  __typename: "HomeEntityResponse";
-  data: QueryUpcoming_sections_data | null;
+  upcomingGames: QueryUpcoming_showcase_upcomingGames | null;
 }
 
 export interface QueryUpcoming {
-  upcomingGames: QueryUpcoming_upcomingGames | null;
-  sections: QueryUpcoming_sections | null;
+  upcomingGames: QueryUpcoming_upcomingGames[];
+  showcase: QueryUpcoming_showcase | null;
+}
+
+export interface QueryUpcomingVariables {
+  date: any;
 }

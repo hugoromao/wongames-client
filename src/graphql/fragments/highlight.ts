@@ -5,18 +5,10 @@ export const HighlightFragment = gql`
     title
     subtitle
     background {
-      data {
-        attributes {
-          url
-        }
-      }
+      url
     }
     floatImage {
-      data {
-        attributes {
-          url
-        }
-      }
+      url
     }
     buttonLabel
     buttonLink

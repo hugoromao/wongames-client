@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { Download } from '@styled-icons/boxicons-solid/Download'
 
 import * as S from './styles'
@@ -20,8 +19,8 @@ export type GameItemProps = {
 
 const GameItem = ({
   img,
-  price,
   title,
+  price,
   downloadLink,
   paymentInfo
 }: GameItemProps) => (
@@ -50,7 +49,7 @@ const GameItem = ({
 
     {!!paymentInfo && (
       <S.PaymentContent>
-        <div>{paymentInfo.purchaseDate}</div>
+        <p>{paymentInfo.purchaseDate}</p>
         <S.CardInfo>
           <span>{paymentInfo.number}</span>
           <img src={paymentInfo.img} alt={paymentInfo.flag} />

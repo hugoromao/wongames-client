@@ -1,19 +1,24 @@
-import { useEffect, useState, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { ArrowBackIos as ArrowLeft } from '@styled-icons/material-outlined/ArrowBackIos'
 import { ArrowForwardIos as ArrowRight } from '@styled-icons/material-outlined/ArrowForwardIos'
+import { Close } from '@styled-icons/material-outlined/Close'
 import SlickSlider from 'react-slick'
 
 import Slider, { SliderSettings } from 'components/Slider'
 
 import * as S from './styles'
-import { Close } from '@styled-icons/material-outlined'
 
-const commonSetting: SliderSettings = {
+const commonSettings: SliderSettings = {
   infinite: false,
   lazyLoad: 'ondemand',
   arrows: true,
   nextArrow: <ArrowRight aria-label="next image" />,
-  prevArrow: <ArrowLeft aria-label="previous image" />,
+  prevArrow: <ArrowLeft aria-label="previous image" />
+}
+
+const settings: SliderSettings = {
+  ...commonSettings,
+  slidesToShow: 4,
   responsive: [
     {
       breakpoint: 1375,
@@ -42,13 +47,8 @@ const commonSetting: SliderSettings = {
   ]
 }
 
-const settings: SliderSettings = {
-  ...commonSetting,
-  slidesToShow: 4
-}
-
 const modalSettings: SliderSettings = {
-  ...commonSetting,
+  ...commonSettings,
   slidesToShow: 1
 }
 
@@ -62,8 +62,8 @@ export type GalleryProps = {
 }
 
 const Gallery = ({ items }: GalleryProps) => {
-  const [isOpen, setIsOpen] = useState(false)
   const slider = useRef<SlickSlider>(null)
+  const [isOpen, setIsOpen] = useState(false)
 
   useEffect(() => {
     const handleKeyUp = ({ key }: KeyboardEvent) => {
@@ -71,18 +71,16 @@ const Gallery = ({ items }: GalleryProps) => {
     }
 
     window.addEventListener('keyup', handleKeyUp)
-
     return () => window.removeEventListener('keyup', handleKeyUp)
   }, [])
 
   return (
     <S.Wrapper>
       <Slider ref={slider} settings={settings}>
-        {items?.map((item, index) => (
-          // eslint-disable-next-line @next/next/no-img-element
+        {items.map((item, index) => (
           <img
-            key={item.src}
             role="button"
+            key={`thumb-${index}`}
             src={item.src}
             alt={`Thumb - ${item.label}`}
             onClick={() => {
@@ -92,6 +90,7 @@ const Gallery = ({ items }: GalleryProps) => {
           />
         ))}
       </Slider>
+
       <S.Modal isOpen={isOpen} aria-label="modal" aria-hidden={!isOpen}>
         <S.Close
           role="button"
@@ -103,13 +102,8 @@ const Gallery = ({ items }: GalleryProps) => {
 
         <S.Content>
           <Slider ref={slider} settings={modalSettings}>
-            {items?.map((item) => (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                key={item.src}
-                src={item.src}
-                alt={`gallery - ${item.label}`}
-              />
+            {items.map((item, index) => (
+              <img key={`gallery-${index}`} src={item.src} alt={item.label} />
             ))}
           </Slider>
         </S.Content>

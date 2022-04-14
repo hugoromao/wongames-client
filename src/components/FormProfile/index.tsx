@@ -1,12 +1,13 @@
 import Button from 'components/Button'
 import Heading from 'components/Heading'
 import TextField from 'components/TextField'
+
 import * as S from './styles'
 
 const FormProfile = () => (
   <>
-    <Heading size="small" lineBottom color="black">
-      My Profile
+    <Heading lineBottom color="black" size="small">
+      My profile
     </Heading>
 
     <S.Form>
@@ -21,9 +22,9 @@ const FormProfile = () => (
         name="email"
         type="email"
         placeholder="E-mail"
+        initialValue="johndoe@gmail.com"
         label="E-mail"
         disabled
-        initialValue="johndoe@gmail.com"
       />
 
       <TextField

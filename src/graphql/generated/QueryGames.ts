@@ -3,68 +3,48 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-import { GameFiltersInput } from "./globalTypes";
-
 // ====================================================
 // GraphQL query operation: QueryGames
 // ====================================================
 
-export interface QueryGames_games_data_attributes_cover_data_attributes {
+export interface QueryGames_games_cover {
   __typename: "UploadFile";
   url: string;
 }
 
-export interface QueryGames_games_data_attributes_cover_data {
-  __typename: "UploadFileEntity";
-  attributes: QueryGames_games_data_attributes_cover_data_attributes | null;
-}
-
-export interface QueryGames_games_data_attributes_cover {
-  __typename: "UploadFileEntityResponse";
-  data: QueryGames_games_data_attributes_cover_data | null;
-}
-
-export interface QueryGames_games_data_attributes_developers_data_attributes {
+export interface QueryGames_games_developers {
   __typename: "Developer";
   name: string;
 }
 
-export interface QueryGames_games_data_attributes_developers_data {
-  __typename: "DeveloperEntity";
-  attributes: QueryGames_games_data_attributes_developers_data_attributes | null;
-}
-
-export interface QueryGames_games_data_attributes_developers {
-  __typename: "DeveloperRelationResponseCollection";
-  data: QueryGames_games_data_attributes_developers_data[];
-}
-
-export interface QueryGames_games_data_attributes {
+export interface QueryGames_games {
   __typename: "Game";
+  id: string;
   name: string;
   slug: string;
-  cover: QueryGames_games_data_attributes_cover | null;
-  developers: QueryGames_games_data_attributes_developers | null;
+  cover: QueryGames_games_cover | null;
+  developers: QueryGames_games_developers[];
   price: number;
 }
 
-export interface QueryGames_games_data {
-  __typename: "GameEntity";
-  attributes: QueryGames_games_data_attributes | null;
+export interface QueryGames_gamesConnection_values {
+  __typename: "Game";
+  id: string;
 }
 
-export interface QueryGames_games {
-  __typename: "GameEntityResponseCollection";
-  data: QueryGames_games_data[];
+export interface QueryGames_gamesConnection {
+  __typename: "GameConnection";
+  values: (QueryGames_gamesConnection_values | null)[] | null;
 }
 
 export interface QueryGames {
-  games: QueryGames_games | null;
+  games: QueryGames_games[];
+  gamesConnection: QueryGames_gamesConnection | null;
 }
 
 export interface QueryGamesVariables {
   limit: number;
-  start: number;
-  filters?: GameFiltersInput | null;
+  start?: number | null;
+  where?: any | null;
   sort?: string | null;
 }

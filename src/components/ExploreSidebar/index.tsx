@@ -41,6 +41,8 @@ const ExploreSidebar = ({
 
   useEffect(() => {
     onFilter(values)
+    // this method comes from another template
+    // that we don't have access
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [values])
 
@@ -48,17 +50,12 @@ const ExploreSidebar = ({
     setValues((s) => ({ ...s, [name]: value }))
   }
 
-  // []
-  // ['windows']
-  // ['windows', 'linux']
-
   const handleCheckbox = (name: string, value: string) => {
     const currentList = (values[name] as []) || []
     setValues((s) => ({ ...s, [name]: xor(currentList, [value]) }))
   }
 
   const handleFilterMenu = () => {
-    onFilter(values)
     setIsOpen(false)
   }
 

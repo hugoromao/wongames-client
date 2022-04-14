@@ -14,17 +14,21 @@ export const Wrapper = styled.div<WrapperProps>`
     display: flex;
     flex-direction: column;
     align-self: start;
+
     ${isEmpty &&
     css`
       ${EmptyStyles.Wrapper} {
         padding-bottom: ${theme.spacings.medium};
       }
+
       ${EmptyStyles.Image} {
         max-width: 20rem;
       }
+
       ${EmptyStyles.Title} {
         font-size: ${theme.font.sizes.large};
       }
+
       ${EmptyStyles.Description} {
         color: ${theme.colors.black};
         font-size: ${theme.font.sizes.medium};
@@ -43,6 +47,7 @@ export const Footer = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     ${media.greaterThan('medium')`
       font-size: ${theme.font.sizes.medium};
       padding: ${theme.spacings.small};

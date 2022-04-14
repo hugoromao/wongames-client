@@ -20,8 +20,8 @@ export const parseQueryStringToWhere = ({
       const isCheckbox = item?.type === 'checkbox'
 
       obj[key] = !isCheckbox
-        ? { lte: queryString[key] }
-        : { name: { contains: queryString[key] } }
+        ? queryString[key]
+        : { name_contains: queryString[key] }
     })
 
   return obj

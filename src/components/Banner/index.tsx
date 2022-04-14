@@ -1,5 +1,6 @@
 import Ribbon, { RibbonColors, RibbonSizes } from 'components/Ribbon'
 import Button from 'components/Button'
+
 import * as S from './styles'
 
 export type BannerProps = {
@@ -35,7 +36,6 @@ const Banner = ({
     <S.Caption>
       <S.Title>{title}</S.Title>
       <S.Subtitle dangerouslySetInnerHTML={{ __html: subtitle }} />
-
       <Button as="a" href={buttonLink} size="large">
         {buttonLabel}
       </Button>

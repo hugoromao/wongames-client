@@ -10,6 +10,7 @@ export const IconWrapper = styled.div`
   cursor: pointer;
   width: 2.4rem;
   height: 2.4rem;
+
   ${media.greaterThan('medium')`
     display: none;
   `}
@@ -23,6 +24,7 @@ export const Content = styled.div`
     margin-top: 5.6rem;
     margin-bottom: 2rem;
     transition: transform ${theme.transition.default};
+
     ${media.greaterThan('medium')`
       overflow-y: initial;
       padding: 0;
@@ -45,6 +47,7 @@ export const Items = styled.div`
     & > div:not(:last-of-type) {
       margin-bottom: ${theme.spacings.xsmall};
     }
+
     & + div {
       border-top: 0.1rem solid ${rgba(theme.colors.gray, 0.2)};
       margin-top: ${theme.spacings.small};
@@ -74,6 +77,7 @@ const wrapperModifiers = {
     flex-direction: column;
     top: 0;
     left: 0;
+
     ${Overlay} {
       z-index: ${theme.layers.modal};
       background-color: #fff;
@@ -84,30 +88,37 @@ const wrapperModifiers = {
       height: 100vh;
       opacity: 1;
     }
+
     ${Content} {
       margin-top: ${theme.spacings.medium};
       transform: translateY(0);
       overflow-y: scroll;
     }
+
     ${Content}, ${Footer}, ${IconWrapper} {
       z-index: ${theme.layers.modal};
     }
+
     ${HeadingStyles.Wrapper} {
       color: ${theme.colors.black};
       font-size: ${theme.font.sizes.xlarge};
       font-weight: ${theme.font.normal};
     }
+
     ${RadioStyles.Label},
     ${CheckboxStyles.Label} {
       color: ${theme.colors.black};
     }
+
     ${IconWrapper} {
       color: ${theme.colors.black};
+
       > svg {
         position: absolute;
         width: 30px;
         right: 0.8rem;
         top: 0.8rem;
+
         &:first-child {
           display: none;
         }
@@ -118,14 +129,17 @@ const wrapperModifiers = {
   close: (theme: DefaultTheme) => css`
     ${IconWrapper} {
       color: ${theme.colors.white};
+
       > svg:last-child {
         display: none;
       }
     }
+
     ${Content} {
       transform: translateY(3rem);
       height: 0;
     }
+
     ${Content}, ${Footer} {
       visibility: hidden;
       position: absolute;

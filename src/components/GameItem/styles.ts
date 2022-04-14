@@ -22,11 +22,13 @@ export const ImageBox = styled.div`
     margin-right: 1.2rem;
     width: 9.6rem;
     height: 5.6rem;
+
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
+
     ${media.greaterThan('medium')`
       margin-right: ${theme.spacings.xsmall};
       width: 15rem;
@@ -48,6 +50,7 @@ export const Title = styled.h3`
     font-weight: ${theme.font.bold};
     color: ${theme.colors.black};
     margin-bottom: ${theme.spacings.xxsmall};
+
     ${media.greaterThan('medium')`
       font-size: 2rem;
       line-height: 2rem;
@@ -70,6 +73,13 @@ export const DownloadLink = styled.a`
   ${({ theme }) => css`
     color: ${theme.colors.primary};
     margin-left: ${theme.spacings.xxsmall};
+    position: relative;
+
+    & > svg {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
   `}
 `
 
@@ -81,6 +91,7 @@ export const PaymentContent = styled.div`
     flex-direction: column;
     min-width: 28rem;
     margin-top: ${theme.spacings.xsmall};
+
     ${media.greaterThan('medium')`
       margin-top: 0;
       flex: 1;
@@ -95,10 +106,11 @@ export const CardInfo = styled.div`
   ${({ theme }) => css`
     display: flex;
     align-items: center;
+
     img {
       margin-left: ${theme.spacings.xxsmall};
-      border-radius: ${theme.border.radius};
     }
+
     ${media.lessThan('medium')`
       margin-top: ${theme.spacings.xsmall};
     `}

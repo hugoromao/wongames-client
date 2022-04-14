@@ -6,6 +6,7 @@ import { HeadingProps, LineColors } from '.'
 export const wrapperModifiers = {
   small: (theme: DefaultTheme) => css`
     font-size: ${theme.font.sizes.medium};
+
     &::after {
       width: 3rem;
     }
@@ -13,6 +14,7 @@ export const wrapperModifiers = {
 
   medium: (theme: DefaultTheme) => css`
     font-size: ${theme.font.sizes.xlarge};
+
     ${media.greaterThan('medium')`
       font-size: ${theme.font.sizes.xxlarge};
     `}
@@ -30,6 +32,7 @@ export const wrapperModifiers = {
   lineBottom: (theme: DefaultTheme, lineColor: LineColors) => css`
     position: relative;
     margin-bottom: ${theme.spacings.medium};
+
     &::after {
       position: absolute;
       left: 0;
@@ -44,6 +47,7 @@ export const wrapperModifiers = {
 export const Wrapper = styled.h2<HeadingProps>`
   ${({ theme, color, lineLeft, lineBottom, lineColor, size }) => css`
     color: ${theme.colors[color!]};
+
     ${lineLeft && wrapperModifiers.lineLeft(theme, lineColor!)}
     ${lineBottom && wrapperModifiers.lineBottom(theme, lineColor!)}
     ${!!size && wrapperModifiers[size](theme)}

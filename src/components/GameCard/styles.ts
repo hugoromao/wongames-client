@@ -24,16 +24,18 @@ export const ImageBox = styled.a`
   );
   background-size: 80rem 14rem;
   animation: placeholderShimmer 1s linear infinite forwards;
+
   img {
     width: 100%;
     height: 100%;
-    object-fit: fill;
-    /* object-fit: cover; */
+    object-fit: cover;
   }
+
   @keyframes placeholderShimmer {
     0% {
       background-position: -40rem 0;
     }
+
     100% {
       background-position: 40rem 0;
     }
@@ -80,6 +82,7 @@ export const FavButton = styled.div`
     right: 0;
     top: -0.5rem;
     cursor: pointer;
+
     svg {
       width: 2.5rem;
     }
@@ -121,7 +124,8 @@ export const Price = styled.div<PriceProps>`
     font-weight: ${theme.font.bold};
     height: 3rem;
     align-items: center;
-    ${!isPromotional && priceModifiers.default(theme)}
-    ${isPromotional && priceModifiers.promotional(theme)}
+
+    ${!isPromotional && priceModifiers.default(theme)};
+    ${isPromotional && priceModifiers.promotional(theme)};
   `}
 `
