@@ -1,10 +1,11 @@
+import { waitFor } from '@testing-library/react'
 import { QueryGames_games } from 'graphql/generated/QueryGames'
 import {
   QueryHome_banners,
   QueryHome_sections_newGames_highlight
 } from 'graphql/generated/QueryHome'
 
-import { bannerMapper, gamesMapper, highlightMapper } from '.'
+import { bannerMapper, cartMapper, gamesMapper, highlightMapper } from '.'
 
 describe('bannerMapper()', () => {
   it('should return the right format when mapped', () => {
@@ -45,7 +46,7 @@ describe('gamesMapper()', () => {
     expect(gamesMapper(null)).toStrictEqual([])
   })
 
-  it('should return the correct format when mapped', () => {
+  it('should return the correct format when mapped', async () => {
     const game = {
       id: '1',
       name: 'game',
@@ -61,16 +62,17 @@ describe('gamesMapper()', () => {
       price: 10
     } as QueryGames_games
 
-    expect(gamesMapper([game])).toStrictEqual([
-      {
-        id: '1',
-        title: 'game',
-        slug: 'game',
-        developer: 'developer',
-        img: 'http://localhost:1337/image.jpg',
-        price: 10
-      }
-    ])
+    await waitFor(() => {
+      expect(gamesMapper([game])).toStrictEqual([
+        {
+          title: 'game',
+          slug: 'game',
+          developer: 'developer',
+          img: '/image.jpg',
+          price: 10
+        }
+      ])
+    })
   })
 })
 
@@ -79,7 +81,7 @@ describe('highlightMapper()', () => {
     expect(highlightMapper(null)).toStrictEqual({})
   })
 
-  it('should return mapped highlight', () => {
+  it('should return mapped highlight', async () => {
     const highlight = {
       title: 'title',
       subtitle: 'subtitle',
@@ -94,14 +96,42 @@ describe('highlightMapper()', () => {
       }
     } as QueryHome_sections_newGames_highlight
 
-    expect(highlightMapper(highlight)).toStrictEqual({
-      title: 'title',
-      subtitle: 'subtitle',
-      backgroundImage: 'http://localhost:1337/image.jpg',
-      buttonLabel: 'button label',
-      buttonLink: 'button link',
-      alignment: 'right',
-      floatImage: 'http://localhost:1337/image.jpg'
+    await waitFor(() => {
+      expect(highlightMapper(highlight)).toStrictEqual({
+        title: 'title',
+        subtitle: 'subtitle',
+        backgroundImage: '/image.jpg',
+        buttonLabel: 'button label',
+        buttonLink: 'button link',
+        alignment: 'right',
+        floatImage: '/image.jpg'
+      })
     })
+  })
+})
+
+describe('cartMapper()', () => {
+  it('should return empty array if no games', () => {
+    expect(cartMapper(undefined)).toStrictEqual([])
+  })
+
+  it('should return mapped items', () => {
+    const game = {
+      id: '1',
+      cover: {
+        url: '/image.jpg'
+      },
+      name: 'game',
+      price: 10
+    } as QueryGames_games
+
+    expect(cartMapper([game])).toStrictEqual([
+      {
+        id: '1',
+        img: 'http://localhost:1337/image.jpg',
+        title: 'game',
+        price: '$10.00'
+      }
+    ])
   })
 })
