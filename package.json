@@ -16,7 +16,8 @@
     "types:generate": "yarn schema:download && yarn schema:convert && yarn codegen",
     "generate": "yarn plop --plopfile generators/plopfile.js",
     "storybook": "start-storybook -s ./public -p 6006",
-    "build-storybook": "build-storybook -s ./public"
+    "build-storybook": "build-storybook -s ./public",
+    "update-packages": "yarn upgrade-interactive --latest"
   },
   "husky": {
     "hooks": {

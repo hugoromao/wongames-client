@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react'
+import { screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { renderWithTheme } from 'utils/tests/helpers'
 
@@ -19,7 +19,7 @@ describe('<Dropdown />', () => {
     expect(screen.getByLabelText(/toogle dropdown/)).toBeInTheDocument()
   })
 
-  it('should handle open/close dropdown', () => {
+  it('should handle open/close dropdown', async () => {
     const content = screen.getByText(/content/).parentElement!
 
     expect(content).toHaveStyle({ opacity: 0 })
@@ -27,7 +27,9 @@ describe('<Dropdown />', () => {
 
     userEvent.click(screen.getByLabelText(/toogle dropdown/))
 
-    expect(content).toHaveStyle({ opacity: 1 })
-    expect(content.getAttribute('aria-hidden')).toBe('false')
+    expect(content).toHaveStyle({ opacity: 0 })
+    await waitFor(() => {
+      expect(content.getAttribute('aria-hidden')).toBe('false')
+    })
   })
 })
