@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Link from 'next/link'
 import { Email, Lock } from '@styled-icons/material-outlined'
 import { signIn } from 'next-auth/react'
 
-import { FormLink, FormWrapper } from 'components/Form'
+import { FormLink, FormLoading, FormWrapper } from 'components/Form'
 import Button from 'components/Button'
 import TextField from 'components/TextField'
 
@@ -12,19 +13,19 @@ import { useRouter } from 'next/router'
 
 const FormSignIn = () => {
   const router = useRouter()
-
+  const [loading, setLoading] = useState(false)
   const [values, setValues] = useState<any>({
     identifier: '',
     password: ''
   })
 
   const handleInput = (field: string, value: string) => {
-    setValues((s) => ({ ...s, [field]: value }))
+    setValues((s: any) => ({ ...s, [field]: value }))
   }
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
-
+    setLoading(true)
     const result: any = await signIn('credentials', {
       ...values,
       redirect: false,
@@ -35,6 +36,7 @@ const FormSignIn = () => {
       return router.push(result?.url)
     }
 
+    setLoading(false)
     console.error('email ou senha inválida')
   }
 
@@ -57,8 +59,8 @@ const FormSignIn = () => {
         />
         <S.ForgotPassword href="#">Forgot your password?</S.ForgotPassword>
 
-        <Button size="large" fullWidth type="submit">
-          Sign in now
+        <Button size="large" fullWidth type="submit" disabled={loading}>
+          {loading ? <FormLoading /> : 'Sign in now'}
         </Button>
 
         <FormLink>
