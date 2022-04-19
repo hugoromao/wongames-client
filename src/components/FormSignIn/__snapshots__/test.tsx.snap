@@ -39,6 +39,12 @@ exports[`<FormSignIn /> should render the form 1`] = `
   width: 100%;
 }
 
+.c5:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 2.4rem #EAEAEA inset;
+  -webkit-filter: none;
+  filter: none;
+}
+
 .c3 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -219,6 +225,7 @@ exports[`<FormSignIn /> should render the form 1`] = `
         </a>
         <button
           class="c7 c8"
+          type="submit"
         >
           <span>
             Sign in now

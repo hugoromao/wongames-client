@@ -21,6 +21,13 @@ jest.mock('components/Showcase', () => ({
   }
 }))
 
+jest.mock('templates/Base', () => ({
+  __esModule: true,
+  default: function Mock({ children }: { children: React.ReactNode }) {
+    return <div data-testid="Mock Base">{children}</div>
+  }
+}))
+
 describe('<Wishlist />', () => {
   it('should render correctly', () => {
     renderWithTheme(<Wishlist {...props} />)
