@@ -14,6 +14,7 @@ const FormSignIn = () => (
         name="email"
         placeholder="Email"
         type="email"
+        onInputChange={(v) => handleInput('identifier', v)}
         icon={<Email />}
       />
       <TextField
