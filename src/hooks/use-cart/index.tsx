@@ -63,10 +63,9 @@ const CartProvider = ({ children }: CartProviderProps) => {
     }
   })
 
-  const total =
-    data?.games.reduce((acc, game) => {
-      return acc + game.price
-    }, 0) || 0
+  const total = data?.games.reduce((acc, game) => {
+    return acc + game.price
+  }, 0)
 
   const isInCart = (id: string) => (id ? cartItems.includes(id) : false)
 
@@ -93,7 +92,7 @@ const CartProvider = ({ children }: CartProviderProps) => {
       value={{
         items: cartMapper(data?.games),
         quantity: cartItems.length,
-        total: formatPrice(total),
+        total: formatPrice(total || 0),
         isInCart,
         addToCart,
         removeFromCart,

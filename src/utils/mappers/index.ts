@@ -23,6 +23,7 @@ export const bannerMapper = (banners: QueryHome_banners[]) => {
 export const gamesMapper = (games: QueryGames_games[] | null | undefined) => {
   return games
     ? games.map((game) => ({
+        id: game.id,
         title: game.name,
         slug: game.slug,
         developer: game.developers[0].name,
@@ -52,7 +53,7 @@ export const cartMapper = (games: QueryGames_games[] | undefined) => {
   return games
     ? games.map((game) => ({
         id: game.id,
-        img: `http://localhost:1337${game.cover?.url}`,
+        img: `${game.cover?.url}`,
         title: game.name,
         price: formatPrice(game.price)
       }))
