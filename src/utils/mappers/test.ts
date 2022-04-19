@@ -65,6 +65,7 @@ describe('gamesMapper()', () => {
     await waitFor(() => {
       expect(gamesMapper([game])).toStrictEqual([
         {
+          id: '1',
           title: 'game',
           slug: 'game',
           developer: 'developer',
@@ -128,7 +129,7 @@ describe('cartMapper()', () => {
     expect(cartMapper([game])).toStrictEqual([
       {
         id: '1',
-        img: 'http://localhost:1337/image.jpg',
+        img: '/image.jpg',
         title: 'game',
         price: '$10.00'
       }

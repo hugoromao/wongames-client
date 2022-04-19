@@ -1,6 +1,6 @@
 import userEvent from '@testing-library/user-event'
 import { CartContextDefaultValues } from 'hooks/use-cart'
-import { render, screen } from 'utils/test-utils'
+import { render, screen, waitFor } from 'utils/test-utils'
 
 import GameItem from '.'
 
@@ -27,7 +27,7 @@ describe('<GameItem />', () => {
     expect(screen.getByText('R$ 215,00')).toBeInTheDocument()
   })
 
-  it('should render remove if the item is inside the cart and call remove', () => {
+  it('should render remove if the item is inside the cart and call remove', async () => {
     const cartProviderProps = {
       ...CartContextDefaultValues,
       isInCart: () => true,
@@ -39,7 +39,10 @@ describe('<GameItem />', () => {
     expect(removeLink).toBeInTheDocument()
 
     userEvent.click(removeLink)
-    expect(cartProviderProps.removeFromCart).toHaveBeenCalledWith('1')
+
+    await waitFor(() => {
+      expect(cartProviderProps.removeFromCart).toHaveBeenCalledWith('1')
+    })
   })
 
   it('should render the item with download link', () => {

@@ -23,7 +23,7 @@ describe('<CartDropdown />', () => {
   })
 
   it('should render Dropdown content with cart items and total', () => {
-    expect(screen.getByText('R$ 300,00')).toBeInTheDocument()
+    expect(screen.getByText('$300.0')).toBeInTheDocument()
     expect(screen.getByText(`${items[0].title}`)).toBeInTheDocument()
   })
 })
