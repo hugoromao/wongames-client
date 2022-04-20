@@ -3,14 +3,13 @@ import Joi from 'joi'
 
 const fieldsValidations = {
   username: Joi.string().min(5).required(),
-  identifier: Joi.string()
-    .email({ tlds: { allow: false } })
-    .required(),
+  identifier: Joi.string().email({ tlds: { allow: false } }),
   password: Joi.string().required(),
   confirm_password: Joi.string()
     .valid(Joi.ref('password'))
     .required()
-    .messages({ 'any.only': 'confirm password does not match with password' })
+    .messages({ 'any.only': 'confirm password does not match with password' }),
+  email: Joi.string()
 }
 
 export type FieldErrors = {
