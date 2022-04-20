@@ -3,7 +3,7 @@ import Joi from 'joi'
 
 const fieldsValidations = {
   username: Joi.string().min(5).required(),
-  email: Joi.string()
+  identifier: Joi.string()
     .email({ tlds: { allow: false } })
     .required(),
   password: Joi.string().required(),
@@ -37,8 +37,8 @@ export function signUpValidate(values: UsersPermissionsRegisterInput) {
 
 type SignInValues = Omit<UsersPermissionsRegisterInput, 'username'>
 export function signInValidate(values: SignInValues) {
-  const { email, password } = fieldsValidations
-  const schema = Joi.object({ email, password })
+  const { identifier, password } = fieldsValidations
+  const schema = Joi.object({ identifier, password })
 
   return getFieldErrors(schema.validate(values, { abortEarly: false }))
 }
