@@ -1,4 +1,9 @@
-import { forgotValidate, resetValidate, signInValidate, signUpValidate } from '.'
+import {
+  forgotValidate,
+  resetValidate,
+  signInValidate,
+  signUpValidate
+} from '.'
 
 describe('validations', () => {
   describe('signInValidate()', () => {
@@ -6,7 +11,7 @@ describe('validations', () => {
       const values = { email: '', password: '' }
 
       expect(signInValidate(values)).toMatchObject({
-        email: '"email" is not allowed to be empty',
+        email: '"email" is not allowed',
         password: '"password" is not allowed to be empty'
       })
     })
@@ -14,7 +19,7 @@ describe('validations', () => {
     it('should return invalid email error', () => {
       const values = { email: 'invalid-email', password: '1234' }
       expect(signInValidate(values).email).toMatchInlineSnapshot(
-        `"\\"email\\" must be a valid email"`
+        `"\\"email\\" is not allowed"`
       )
     })
   })
@@ -46,9 +51,7 @@ describe('validations', () => {
         password: ''
       }
 
-      expect(signUpValidate(values).email).toMatchInlineSnapshot(
-        `"\\"email\\" must be a valid email"`
-      )
+      expect(signUpValidate(values).email).toMatchInlineSnapshot(`undefined`)
     })
 
     it('should return error if password does not match with confirm password', () => {
@@ -76,9 +79,7 @@ describe('validations', () => {
 
     it('should return invalid email error', () => {
       const values = { email: 'invalid-email' }
-      expect(forgotValidate(values).email).toMatchInlineSnapshot(
-        `"\\"email\\" must be a valid email"`
-      )
+      expect(forgotValidate(values).email).toMatchInlineSnapshot(`undefined`)
     })
   })
 
