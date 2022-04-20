@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { CheckCircle, Email } from '@styled-icons/material-outlined'
 
@@ -14,13 +15,12 @@ import { useState } from 'react'
 import { FieldErrors, forgotValidate } from 'utils/validations'
 
 const FormForgotPassword = () => {
+  const { query } = useRouter()
   const [success, setSuccess] = useState(false)
   const [formError, setFormError] = useState('')
   const [fieldError, setFieldError] = useState<FieldErrors>({})
   const [loading, setLoading] = useState(false)
-  const [values, setValues] = useState<any>({
-    email: ''
-  })
+  const [values, setValues] = useState({ email: (query.email as string) || '' })
 
   const handleInput = (field: string, value: string) => {
     setValues((s: any) => ({ ...s, [field]: value }))
@@ -82,6 +82,7 @@ const FormForgotPassword = () => {
               onInputChange={(v) => handleInput('email', v)}
               icon={<Email />}
               error={fieldError.email}
+              initialValue={query.email as string}
             />
 
             <Button size="large" fullWidth type="submit" disabled={loading}>
