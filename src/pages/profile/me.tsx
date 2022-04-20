@@ -8,7 +8,6 @@ import { initializeApollo } from 'utils/apollo'
 import protectedRoutes from 'utils/protected-routes'
 
 export default function Me(props: FormProfileProps) {
-  console.log(props)
   return (
     <Profile>
       <FormProfile {...props} />
