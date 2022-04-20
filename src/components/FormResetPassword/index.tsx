@@ -1,30 +1,24 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { Lock } from '@styled-icons/material-outlined'
+import { useState } from 'react'
 import { signIn } from 'next-auth/react'
+import { useRouter } from 'next/router'
 
-import { FormLoading, FormWrapper, FormError } from 'components/Form'
+import { Lock, ErrorOutline } from '@styled-icons/material-outlined'
+
+import { FormWrapper, FormLoading, FormError } from 'components/Form'
 import Button from 'components/Button'
 import TextField from 'components/TextField'
 
-import { useState } from 'react'
-import { useRouter } from 'next/router'
 import { FieldErrors, resetValidate } from 'utils/validations'
 
 const FormResetPassword = () => {
-  const router = useRouter()
-
-  const routes = useRouter()
-  const { query } = routes
   const [formError, setFormError] = useState('')
   const [fieldError, setFieldError] = useState<FieldErrors>({})
+  const [values, setValues] = useState({ password: '', confirm_password: '' })
   const [loading, setLoading] = useState(false)
-  const [values, setValues] = useState<any>({
-    password: '',
-    confirmPassword: ''
-  })
+  const { query } = useRouter()
 
   const handleInput = (field: string, value: string) => {
-    setValues((s: any) => ({ ...s, [field]: value }))
+    setValues((s) => ({ ...s, [field]: value }))
   }
 
   const handleSubmit = async (event: React.FormEvent) => {
@@ -41,44 +35,62 @@ const FormResetPassword = () => {
 
     setFieldError({})
 
-    const result: any = await signIn('credentials', {
-      ...values,
-      redirect: false,
-      callbackUrl: `${window.location.origin}${query?.callbackUrl || ''}`
-    })
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/auth/reset-password`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          password: values.password,
+          passwordConfirmation: values.confirm_password,
+          code: query.code
+        })
+      }
+    )
 
-    if (result?.url) {
-      return router.push(result?.url)
+    const data = await response.json()
+
+    if (data.error) {
+      setFormError(data.message[0].messages[0].message)
+      setLoading(false)
+    } else {
+      signIn('credentials', {
+        email: data.user.email,
+        password: values.password,
+        callbackUrl: '/'
+      })
     }
-
-    setLoading(false)
-
-    setFormError('email ou senha inválida')
   }
 
   return (
     <FormWrapper>
-      {!!formError && <FormError>{formError}</FormError>}
+      {!!formError && (
+        <FormError>
+          <ErrorOutline /> {formError}
+        </FormError>
+      )}
       <form onSubmit={handleSubmit}>
         <TextField
           name="password"
-          placeholder="Senha"
+          placeholder="Password"
           type="password"
+          error={fieldError?.password}
           onInputChange={(v) => handleInput('password', v)}
           icon={<Lock />}
-          error={fieldError?.password}
         />
         <TextField
-          name="confirm-password"
-          placeholder="Confirmar senha"
+          name="confirm_password"
+          placeholder="Confirm password"
           type="password"
+          error={fieldError?.confirm_password}
           onInputChange={(v) => handleInput('confirm_password', v)}
           icon={<Lock />}
-          error={fieldError?.confirm_password}
         />
 
-        <Button size="large" fullWidth type="submit" disabled={loading}>
-          {loading ? <FormLoading /> : 'Reset Password'}
+        <Button type="submit" size="large" fullWidth disabled={loading}>
+          {loading ? <FormLoading /> : <span>Reset Password</span>}
         </Button>
       </form>
     </FormWrapper>

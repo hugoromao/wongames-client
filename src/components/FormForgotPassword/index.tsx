@@ -1,7 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { CheckCircle, Email } from '@styled-icons/material-outlined'
 
-import { FormLoading, FormWrapper, FormError, FormSuccess } from 'components/Form'
+import {
+  FormLoading,
+  FormWrapper,
+  FormError,
+  FormSuccess
+} from 'components/Form'
 import Button from 'components/Button'
 import TextField from 'components/TextField'
 
