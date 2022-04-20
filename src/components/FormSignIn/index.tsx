@@ -15,6 +15,8 @@ import { FieldErrors, signInValidate } from 'utils/validations'
 const FormSignIn = () => {
   const router = useRouter()
 
+  const routes = useRouter()
+  const { push, query } = routes
   const [formError, setFormError] = useState('')
   const [fieldError, setFieldError] = useState<FieldErrors>({})
   const [loading, setLoading] = useState(false)
@@ -44,7 +46,7 @@ const FormSignIn = () => {
     const result: any = await signIn('credentials', {
       ...values,
       redirect: false,
-      callbackUrl: '/'
+      callbackUrl: `${window.location.origin}${query?.callbackUrl || ''}`
     })
 
     if (result?.url) {
