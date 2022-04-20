@@ -8,7 +8,7 @@ import TextField from 'components/TextField'
 
 import { useState } from 'react'
 import { useRouter } from 'next/router'
-import { FieldErrors } from 'utils/validations'
+import { FieldErrors, forgotValidate } from 'utils/validations'
 
 const FormForgotPassword = () => {
   const router = useRouter()
@@ -19,7 +19,7 @@ const FormForgotPassword = () => {
   const [fieldError, setFieldError] = useState<FieldErrors>({})
   const [loading, setLoading] = useState(false)
   const [values, setValues] = useState<any>({
-    identifier: ''
+    email: ''
   })
 
   const handleInput = (field: string, value: string) => {
@@ -30,7 +30,7 @@ const FormForgotPassword = () => {
     event.preventDefault()
     setLoading(true)
 
-    const errors = {} // todo validate
+    const errors = forgotValidate(values)
 
     if (Object.keys(errors).length) {
       setFieldError(errors)
@@ -63,7 +63,7 @@ const FormForgotPassword = () => {
           name="email"
           placeholder="Email"
           type="email"
-          onInputChange={(v) => handleInput('identifier', v)}
+          onInputChange={(v) => handleInput('email', v)}
           icon={<Email />}
           error={fieldError.email}
         />

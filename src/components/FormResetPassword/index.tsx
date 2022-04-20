@@ -8,7 +8,7 @@ import TextField from 'components/TextField'
 
 import { useState } from 'react'
 import { useRouter } from 'next/router'
-import { FieldErrors } from 'utils/validations'
+import { FieldErrors, resetValidate } from 'utils/validations'
 
 const FormResetPassword = () => {
   const router = useRouter()
@@ -31,7 +31,7 @@ const FormResetPassword = () => {
     event.preventDefault()
     setLoading(true)
 
-    const errors = {} // todo validate
+    const errors = resetValidate(values)
 
     if (Object.keys(errors).length) {
       setFieldError(errors)
