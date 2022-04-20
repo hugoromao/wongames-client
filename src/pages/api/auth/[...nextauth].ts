@@ -30,8 +30,8 @@ const options: NextAuthOptions = {
     })
   ],
   callbacks: {
-    session: async ({ session, user }) => {
-      session.jwt = user?.jwt
+    session: async ({ session, user, token }) => {
+      session.jwt = token?.jwt
       session.id = user?.id
 
       return Promise.resolve(session)
@@ -43,7 +43,6 @@ const options: NextAuthOptions = {
         token.name = user?.name
         token.jwt = user?.jwt
       }
-
       return Promise.resolve(token)
     }
   }
