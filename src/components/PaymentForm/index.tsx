@@ -1,10 +1,11 @@
-import { CardElement } from '@stripe/react-stripe-js'
+import { CardElement, useStripe } from '@stripe/react-stripe-js'
 import { StripeCardElementChangeEvent } from '@stripe/stripe-js'
 import { ErrorOutline, ShoppingCart } from '@styled-icons/material-outlined'
 
 import Button from 'components/Button'
 import Heading from 'components/Heading'
-import { useState } from 'react'
+import { useCart } from 'hooks/use-cart'
+import { useEffect, useState } from 'react'
 
 import * as S from './styles'
 
@@ -15,13 +16,24 @@ export type PaymentCard = {
 }
 
 const PaymentForm = () => {
+  const { items } = useCart()
   const [error, setError] = useState<string | null>(null)
   const [disabled, setDisabled] = useState(true)
+  const [clientSecret, setClientSecret] = useState('')
+  const [freeGames, setFreeGames] = useState(false)
+  const stripe = useStripe()
 
   const handleChange = async (event: StripeCardElementChangeEvent) => {
     setDisabled(event.empty)
     setError(event.error ? event.error.message : '')
   }
+
+  useEffect(() => {
+    if (items.length) {
+
+
+    }
+  }, [items])
 
   return (
     <S.Wrapper>
