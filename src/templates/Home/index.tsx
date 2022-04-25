@@ -71,6 +71,18 @@ const Home = ({
       ribbon: 'Exclusivo',
       ribbonColor: 'primary',
       ribbonSize: 'normal'
+    },
+    {
+      title: 'Star Wars Jedi: Fallen Order',
+      subtitle:
+        'Como um dos últimos Jedi, você deve fazer o que for preciso para sobreviver. Complete seu treinamento antes que os Inquisidores descubram seu plano para reconstruir a Ordem Jedi.',
+      buttonLabel: 'TORNE-SE UM JEDI',
+      buttonLink: 'http://localhost:3000',
+      img:
+        'https://media.contentapi.ea.com/content/dam/eacom/jedi-fallen-order/images/2019/06/star-wars-jedi-bd-combat-shot.jpg.adapt.crop16x9.818p.jpg',
+      ribbon: 'Exclusivo',
+      ribbonColor: 'primary',
+      ribbonSize: 'normal'
     }
   ])
   return (
