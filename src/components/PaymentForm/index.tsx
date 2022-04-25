@@ -5,7 +5,10 @@ import { ErrorOutline, ShoppingCart } from '@styled-icons/material-outlined'
 import Button from 'components/Button'
 import Heading from 'components/Heading'
 import { useCart } from 'hooks/use-cart'
+import { Session } from 'next-auth'
+import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
+import { createPaymentIntent } from 'utils/stripe/methods'
 
 import * as S from './styles'
 
@@ -15,7 +18,11 @@ export type PaymentCard = {
   img: string
 }
 
-const PaymentForm = () => {
+type PaymentFormProps = {
+  session: Session
+}
+
+const PaymentForm = ({ session }: PaymentFormProps) => {
   const { items } = useCart()
   const [error, setError] = useState<string | null>(null)
   const [disabled, setDisabled] = useState(true)
@@ -29,11 +36,29 @@ const PaymentForm = () => {
   }
 
   useEffect(() => {
-    if (items.length) {
+    async function setPaymentMode() {
+      if (items.length) {
+        const data = await createPaymentIntent({
+          items,
+          token: session.jwt! as string
+        })
 
+        if (data.freeGames) {
+          setFreeGames(true)
+          return
+        }
 
+        if (data.error) {
+          setError(data.error)
+          return
+        }
+
+        setClientSecret(data.client_secret)
+      }
     }
-  }, [items])
+
+    setPaymentMode()
+  }, [items, session])
 
   return (
     <S.Wrapper>
