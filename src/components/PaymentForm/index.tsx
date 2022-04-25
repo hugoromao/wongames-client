@@ -29,8 +29,15 @@ const PaymentForm = () => {
         </Heading>
 
         <CardElement
-          options={{ hidePostalCode: true }}
           onChange={handleChange}
+          options={{
+            hidePostalCode: true,
+            style: {
+              base: {
+                fontSize: '16px'
+              }
+            }
+          }}
         />
 
         {!!error && (
