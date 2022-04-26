@@ -12,7 +12,7 @@ const fetcher = async ({ url, body, token }: FetcherParams) => {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${token}`,
-      'Content-type': 'application/json'
+      'Content-Type': 'application/json'
     },
     body
   })
@@ -21,21 +21,19 @@ const fetcher = async ({ url, body, token }: FetcherParams) => {
 }
 
 type PaymentIntentParams = {
-  token: string
   items: CartItem[]
+  token: string
 }
 
 export const createPaymentIntent = async ({
   items,
   token
 }: PaymentIntentParams) => {
-  const response = await fetcher({
-    url: `/orders/create-payment-intent`,
+  return fetcher({
+    url: '/orders/create-payment-intent',
     body: JSON.stringify({ cart: items }),
     token
   })
-
-  return await response.json()
 }
 
 type CreatePaymentParams = {

@@ -1,12 +1,8 @@
-import {
-  CardElement,
-  useElements,
-  useStripe,
-  PaymentIntent
-} from '@stripe/react-stripe-js'
-import { StripeCardElementChangeEvent } from '@stripe/stripe-js'
+import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
+import { PaymentIntent, StripeCardElementChangeEvent } from '@stripe/stripe-js'
 import { ErrorOutline, ShoppingCart } from '@styled-icons/material-outlined'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 import Button from 'components/Button'
 import { FormLoading } from 'components/Form'
@@ -138,9 +134,11 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
           )}
         </S.Body>
         <S.Footer>
-          <Button as="a" fullWidth minimal>
-            Continue shopping
-          </Button>
+          <Link href="/" passHref>
+            <Button as="a" fullWidth minimal>
+              Continue shopping
+            </Button>
+          </Link>
           <Button
             fullWidth
             icon={loading ? <FormLoading /> : <ShoppingCart />}

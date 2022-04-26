@@ -32,7 +32,7 @@ const options: NextAuthOptions = {
   callbacks: {
     session: async ({ session, user, token }) => {
       session.jwt = token?.jwt
-      session.id = user?.id
+      session.id = token?.id
 
       return Promise.resolve(session)
     },
