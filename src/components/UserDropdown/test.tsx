@@ -4,6 +4,13 @@ import { renderWithTheme } from 'utils/tests/helpers'
 
 import UserDropdown from '.'
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const useRouter = jest.spyOn(require('next/router'), 'useRouter')
+
+useRouter.mockImplementation(() => ({
+  query: {}
+}))
+
 describe('<UserDropdown />', () => {
   it('should render the username', () => {
     renderWithTheme(<UserDropdown username="Willian" />)

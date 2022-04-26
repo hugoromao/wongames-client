@@ -6,5 +6,15 @@ module.exports = withPWA({
   pwa: {
     dest: 'public',
     disable: !isProd
+  },
+  images: {
+    domains: [
+      'localhost',
+      'res.cloudinary.com',
+      'nerdolandia.com',
+      'www.pdvg.it',
+      'sm.ign.com',
+      'media.contentapi.ea.com'
+    ]
   }
 })
