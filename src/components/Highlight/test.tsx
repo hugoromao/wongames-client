@@ -1,4 +1,5 @@
 import { screen } from '@testing-library/react'
+import { render } from 'utils/test-utils'
 import { renderWithTheme } from 'utils/tests/helpers'
 
 import Highlight from '.'
@@ -30,11 +31,11 @@ describe('<Highlight />', () => {
   })
 
   it('should render background image', () => {
-    const { container } = renderWithTheme(<Highlight {...props} />)
+    render(<Highlight {...props} />)
 
-    expect(container.firstChild).toHaveStyle({
-      backgroundImage: `url(${props.backgroundImage})`
-    })
+    expect(
+      screen.getByRole('img', { name: `${props.title} background` })
+    ).toHaveAttribute('src', `${props.backgroundImage}`)
   })
 
   it('should render float image', () => {

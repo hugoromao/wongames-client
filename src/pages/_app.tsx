@@ -5,6 +5,9 @@ import Head from 'next/head'
 import NextProgress from 'nextjs-progressbar'
 import { SessionProvider } from 'next-auth/react'
 
+import { DefaultSeo } from 'next-seo'
+import SEO from '../../next-seo.config'
+
 import GlobalStyles from 'styles/global'
 import theme from 'styles/theme'
 import { useApollo } from 'utils/apollo'
@@ -30,6 +33,7 @@ function App({ Component, pageProps }: AppProps) {
                   content="The best Game Stores in the world!"
                 />
               </Head>
+              <DefaultSeo {...SEO} />
               <GlobalStyles />
               <NextProgress
                 color="#F231A5"

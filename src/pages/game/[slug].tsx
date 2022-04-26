@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'
 import { initializeApollo } from 'utils/apollo'
+import { getImageUrl } from 'utils/getImageUrl'
 
 import Game, { GameTemplateProps } from 'templates/Game'
 
@@ -78,7 +79,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return {
     revalidate: 60,
     props: {
-      cover: `${game.cover?.src}`,
+      cover: `${getImageUrl(game.cover?.src)}`,
       gameInfo: {
         id: game.id,
         title: game.name,
