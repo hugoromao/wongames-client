@@ -28,7 +28,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     query: QUERY_ORDERS,
     variables: {
       identifier: session?.id as string
-    }
+    },
+    fetchPolicy: 'no-cache'
   })
   console.log(data.orders)
   return {
