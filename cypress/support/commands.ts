@@ -41,6 +41,16 @@ Cypress.Commands.add('signUp', (user: User) => {
   cy.findByRole('button', { name: /sign up now/i }).click()
 })
 
+Cypress.Commands.add(
+  'signIn',
+  (email = 'hugo8romao@gmail.com', password = '12345678') => {
+    cy.url().should('contain', `${Cypress.config().baseUrl}sign-in`)
+    cy.findByPlaceholderText(/email/i).type(email)
+    cy.findByPlaceholderText(/^password/i).type(password)
+    cy.findByRole('button', { name: /sign in now/i }).click()
+  }
+)
+
 Cypress.Commands.add('shouldRenderBanner', () => {
   cy.get('.slick-slider').within(() => {
     cy.findByRole('heading', { name: /LEGO Star Wars: A Saga Skywalker/i })
