@@ -19,7 +19,8 @@
     "build-storybook": "build-storybook -s ./public",
     "update-packages": "yarn upgrade-interactive --latest",
     "cy:open": "cypress open",
-    "cy:run": "cypress run"
+    "cy:run": "cypress run",
+    "test:e2e": "start-server-and-test dev 3000 cy:open"
   },
   "husky": {
     "hooks": {
