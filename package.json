@@ -18,7 +18,7 @@
     "storybook": "start-storybook -s ./public -p 6006",
     "build-storybook": "build-storybook -s ./public",
     "update-packages": "yarn upgrade-interactive --latest",
-    "cypress:open": "cypress open"
+    "cy:open": "cypress open"
   },
   "husky": {
     "hooks": {
