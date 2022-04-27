@@ -25,6 +25,7 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 import '@testing-library/cypress/add-commands'
+import 'cypress-plugin-stripe-elements'
 import { User } from './generate'
 
 Cypress.Commands.add('google', () => cy.visit('https://google.com'))
@@ -112,4 +113,20 @@ Cypress.Commands.add('shouldBeLessThan', (value) => {
     .then(($el) => $el.replace('$', ''))
     .then(parseFloat)
     .should('be.lt', value)
+})
+
+Cypress.Commands.add('addToCartByIndex', (index) => {
+  cy.getByDataCy('game-card')
+    .eq(index)
+    .within(() => {
+      cy.findByRole('button', { name: /add to cart/i }).click()
+    })
+})
+
+Cypress.Commands.add('removeFromCartByIndex', (index) => {
+  cy.getByDataCy('game-card')
+    .eq(index)
+    .within(() => {
+      cy.findByRole('button', { name: /remove from cart/i }).click()
+    })
 })

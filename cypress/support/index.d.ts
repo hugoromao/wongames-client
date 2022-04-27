@@ -28,5 +28,7 @@ declare namespace Cypress {
     shouldBeGreaterThan(value: number): Chainable<Element>
     signUp(user: User): Chainable<Element>
     signIn(email?: string, password?: string): Chainable<Element>
+    addToCartByIndex(value: number): Chainable<Element>
+    removeFromCartByIndex(value: number): Chainable<Element>
   }
 }

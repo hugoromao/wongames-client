@@ -112,7 +112,7 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
             Payment
           </Heading>
           {freeGames ? (
-            <S.FreeGames>Only free games, click buy and enjoy</S.FreeGames>
+            <S.FreeGames>Only free games, click buy and enjoy!</S.FreeGames>
           ) : (
             <CardElement
               onChange={handleChange}

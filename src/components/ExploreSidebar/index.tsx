@@ -67,7 +67,7 @@ const ExploreSidebar = ({
         <Close aria-label="close filters" onClick={() => setIsOpen(false)} />
       </S.IconWrapper>
 
-      <S.Content>
+      <S.Content data-cy="explore-filters-sidebar">
         {items.map((item) => (
           <S.Items key={item.title}>
             <Heading lineBottom lineColor="secondary" size="small">

@@ -82,6 +82,7 @@
     "babel-loader": "^8.1.0",
     "babel-plugin-styled-components": "^2.0.7",
     "cypress": "^7.2.0",
+    "cypress-plugin-stripe-elements": "^1.0.2",
     "eslint": "^8.13.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-cypress": "^2.12.1",
