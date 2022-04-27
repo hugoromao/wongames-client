@@ -53,7 +53,7 @@ const Home = ({
     {
       title: 'Life Is Strange: TRUE COLORS',
       subtitle: 'Mude vidas e destinos com o poder psíquico da Empatia.',
-      buttonLabel: 'COMPRE AGORA',
+      buttonLabel: 'Conheça Haven Springs',
       buttonLink: 'http://localhost:3000',
       img: 'https://www.pdvg.it/wp-content/uploads/2021/09/gm9295.jpg',
       ribbon: 'GOT',
