@@ -14,7 +14,7 @@ describe('Game Page', () => {
         'exist'
       )
       cy.findByText('FREE').should('exist')
-      cy.findByRole('button', { name: /add to cart/i }).should('exist')
+      cy.findByRole('button', { name: /Adicionar no carrinho/i }).should('exist')
     })
 
     // gallery
@@ -55,7 +55,7 @@ describe('Game Page', () => {
 
   it('should add/remove game in cart', () => {
     cy.getByDataCy('game-info').within(() => {
-      cy.findByRole('button', { name: /add to cart/i }).click()
+      cy.findByRole('button', { name: /Adicionar no carrinho/i }).click()
       cy.findByRole('button', { name: /remove from cart/i }).should('exist')
     })
 
@@ -76,7 +76,7 @@ describe('Game Page', () => {
     // remove from cart
     cy.getByDataCy('game-info').within(() => {
       cy.findByRole('button', { name: /remove from cart/i }).click()
-      cy.findByRole('button', { name: /add to cart/i }).should('exist')
+      cy.findByRole('button', { name: /Adicionar no carrinho/i }).should('exist')
     })
 
     cy.findAllByLabelText(/cart items/i).should('not.exist')

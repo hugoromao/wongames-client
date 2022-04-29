@@ -18,7 +18,7 @@ describe('<FormForgotPassword />', () => {
 
     expect(screen.getByPlaceholderText(/email/i)).toBeInTheDocument()
     expect(
-      screen.getByRole('button', { name: /send email/i })
+      screen.getByRole('button', { name: /enviar email/i })
     ).toBeInTheDocument()
   })
 
@@ -30,10 +30,10 @@ describe('<FormForgotPassword />', () => {
       'valid@email.com'
     )
 
-    userEvent.click(screen.getByRole('button', { name: /send email/i }))
+    userEvent.click(screen.getByRole('button', { name: /enviar email/i }))
 
     expect(
-      await screen.findByText(/You just received an email!/i)
+      await screen.findByText(/Você recebeu um email!/i)
     ).toBeInTheDocument()
   })
 
@@ -45,7 +45,7 @@ describe('<FormForgotPassword />', () => {
       'false@email.com'
     )
 
-    userEvent.click(screen.getByRole('button', { name: /send email/i }))
+    userEvent.click(screen.getByRole('button', { name: /enviar email/i }))
 
     expect(
       await screen.findByText(/This email does not exist/i)

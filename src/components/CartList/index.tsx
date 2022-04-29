@@ -45,8 +45,8 @@ const CartList = ({ hasButton = false }: CartListProps) => {
         </>
       ) : (
         <Empty
-          title="Your cart is empty"
-          description="Go back to the store and explore great games and offers."
+          title="Seu carrinho está vazio"
+          description="Volte para a loja e explore ótimos jogos e ofertas."
           hasLink
         />
       )}

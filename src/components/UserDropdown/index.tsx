@@ -33,7 +33,7 @@ const UserDropdown = ({ username }: UserDropdownProps) => {
         <Link href="/profile/me" passHref>
           <S.Link>
             <AccountCircle />
-            <span>My profile</span>
+            <span>Meu perfil</span>
           </S.Link>
         </Link>
         <Link href="/wishlist" passHref>
@@ -52,7 +52,7 @@ const UserDropdown = ({ username }: UserDropdownProps) => {
           }}
         >
           <ExitToApp />
-          <span>Sign out</span>
+          <span>Sair</span>
         </S.Link>
       </S.Nav>
     </Dropdown>

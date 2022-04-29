@@ -45,13 +45,13 @@ export const cartItems = [
   {
     id: '1',
     img: '/sample-game.jpg',
-    price: '$10.50',
+    price: 'R$ 10,50',
     title: 'Sample Game'
   },
   {
     id: '2',
     img: '/sample-game.jpg',
-    price: '$10.50',
+    price: 'R$ 10,50',
     title: 'Sample Game'
   }
 ]

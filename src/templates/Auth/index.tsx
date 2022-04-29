@@ -20,9 +20,11 @@ const Auth = ({ title, children }: AuthProps) => (
         </Link>
 
         <div>
-          <Heading size="huge">All your favorite games in one place</Heading>
+          <Heading size="huge">
+            Todos os seus jogos favoritos em um só lugar
+          </Heading>
           <S.Subtitle>
-            <strong>WON</strong> is the best and most complete gaming platform.
+            <strong>WON</strong> é a melhor e mais completa plataforma de jogos.
           </S.Subtitle>
         </div>
 

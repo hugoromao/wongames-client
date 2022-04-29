@@ -19,16 +19,19 @@ const ProfileMenu = ({ activeLink }: ProfileMenuProps) => {
   return (
     <S.Nav>
       <Link href="/profile/me" passHref>
-        <S.Link isActive={activeLink === '/profile/me'} title="My profile">
+        <S.Link isActive={activeLink === '/profile/me'} title="Meu perfil">
           <AccountCircle size={24} />
-          <span>My profile</span>
+          <span>Meu perfil</span>
         </S.Link>
       </Link>
 
       <Link href="/profile/orders" passHref>
-        <S.Link isActive={activeLink === '/profile/orders'} title="My orders">
+        <S.Link
+          isActive={activeLink === '/profile/orders'}
+          title="Meus pedidos"
+        >
           <FormatListBulleted size={24} />
-          <span>My orders</span>
+          <span>Meus pedidos</span>
         </S.Link>
       </Link>
 
@@ -39,8 +42,8 @@ const ProfileMenu = ({ activeLink }: ProfileMenuProps) => {
           push(data.url)
         }}
       >
-        <ExitToApp size={24} title="Sign out" />
-        <span>Sign out</span>
+        <ExitToApp size={24} title="Sair" />
+        <span>Sair</span>
       </S.Link>
     </S.Nav>
   )

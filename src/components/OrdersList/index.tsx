@@ -16,7 +16,7 @@ type OrderProps = {
 const OrdersList = ({ items = [] }: OrdersListProps) => (
   <S.Wrapper>
     <Heading lineBottom lineColor="primary" color="black" size="small">
-      My orders
+      Meus pedidos
     </Heading>
 
     {items.length ? (
@@ -27,8 +27,8 @@ const OrdersList = ({ items = [] }: OrdersListProps) => (
       })
     ) : (
       <Empty
-        title="You have no orders yet"
-        description="Go back to the store and explore great games and offers"
+        title="Seu carrinho está vazio"
+        description="Volte para a loja e explore ótimos jogos e ofertas."
         hasLink
       />
     )}

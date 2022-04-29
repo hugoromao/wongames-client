@@ -112,13 +112,13 @@ const FormSignUp = () => {
         />
 
         <Button size="large" fullWidth type="submit">
-          {loading ? <FormLoading /> : 'Sign up now'}
+          {loading ? <FormLoading /> : 'Inscrever-se'}
         </Button>
 
         <FormLink>
-          Already have an account?{' '}
+          Já tem uma conta?{' '}
           <Link href="/sign-in">
-            <a>Sign in</a>
+            <a>Entrar</a>
           </Link>
         </FormLink>
       </form>

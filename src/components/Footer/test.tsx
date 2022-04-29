@@ -8,17 +8,17 @@ describe('<Footer />', () => {
     const { container } = renderWithTheme(<Footer />)
 
     expect(
-      screen.getByRole('heading', { name: /contact us/i })
+      screen.getByRole('heading', { name: /contato/i })
     ).toBeInTheDocument()
 
     expect(
-      screen.getByRole('heading', { name: /follow us/i })
+      screen.getByRole('heading', { name: /Siga-nos/i })
     ).toBeInTheDocument()
 
     expect(screen.getByRole('heading', { name: /links/i })).toBeInTheDocument()
 
     expect(
-      screen.getByRole('heading', { name: /location/i })
+      screen.getByRole('heading', { name: /Endereço/i })
     ).toBeInTheDocument()
 
     expect(container.firstChild).toMatchSnapshot()

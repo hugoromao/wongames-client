@@ -17,7 +17,7 @@ describe('<FormSignUp />', () => {
     expect(screen.getByPlaceholderText('Senha')).toBeInTheDocument()
     expect(screen.getByPlaceholderText('Confirmar senha')).toBeInTheDocument()
     expect(
-      screen.getByRole('button', { name: /sign up now/i })
+      screen.getByRole('button', { name: /Inscrever-se/i })
     ).toBeInTheDocument()
 
     expect(container.firstChild).toMatchSnapshot()
@@ -30,7 +30,7 @@ describe('<FormSignUp />', () => {
       </MockedProvider>
     )
 
-    expect(screen.getByRole('link', { name: /sign in/i })).toBeInTheDocument()
-    expect(screen.getByText(/already have an account\?/i)).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /Entrar/i })).toBeInTheDocument()
+    expect(screen.getByText(/Já tem uma conta\?/i)).toBeInTheDocument()
   })
 })

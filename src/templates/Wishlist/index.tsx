@@ -45,8 +45,8 @@ const Wishlist = ({
           </Grid>
         ) : (
           <Empty
-            title="Your wishtlist is empty"
-            description="Games added to your wishlist will appear here"
+            title="Sua wishtlist está vazia"
+            description="Os jogos adicionados à sua lista de desejos aparecerão aqui"
             hasLink
           />
         )}

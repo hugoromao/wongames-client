@@ -3,7 +3,7 @@ import Auth from 'templates/Auth'
 
 export default function ForgotPassword() {
   return (
-    <Auth title="Request new password">
+    <Auth title="Esqueceu sua senha?">
       <FormForgotPassword />
     </Auth>
   )

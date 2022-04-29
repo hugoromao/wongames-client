@@ -40,10 +40,10 @@ const Menu = ({ username, loading }: MenuProps) => {
       <MediaMatch greaterThan="medium">
         <S.MenuNav>
           <Link href="/" passHref>
-            <S.MenuLink>Home</S.MenuLink>
+            <S.MenuLink>Início</S.MenuLink>
           </Link>
           <Link href="/games" passHref>
-            <S.MenuLink>Explore</S.MenuLink>
+            <S.MenuLink>Explorar</S.MenuLink>
           </Link>
         </S.MenuNav>
       </MediaMatch>
@@ -93,7 +93,7 @@ const Menu = ({ username, loading }: MenuProps) => {
               {!!username && (
                 <>
                   <Link href="/profile/me" passHref>
-                    <S.MenuLink>My profile</S.MenuLink>
+                    <S.MenuLink>Meu perfil</S.MenuLink>
                   </Link>
                   <Link href="/wishlist" passHref>
                     <S.MenuLink>Wishlist</S.MenuLink>

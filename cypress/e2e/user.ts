@@ -14,7 +14,7 @@ describe('User', () => {
     cy.findByPlaceholderText(/^senha/i).type(user.password)
     cy.findByPlaceholderText(/confirmar senha/i).type(user.password)
 
-    cy.findByRole('button', { name: /sign up now/i }).click()
+    cy.findByRole('button', { name: /Inscrever-se/i }).click()
 
     cy.url().should('eq', `${Cypress.config().baseUrl}`)
     cy.findByText(user.username).should('exist')
@@ -29,11 +29,11 @@ describe('User', () => {
       .should('exist')
       .click()
 
-    cy.findByText(/sign out/i).click()
+    cy.findByText(/sair/i).click()
 
     cy.wait(5000)
 
-    cy.findByRole('link', { name: /sign in/i }).should('exist')
+    cy.findByRole('link', { name: /Entrar/i }).should('exist')
     cy.findByText(/hugo8romao@gmail\.com/i).should('not.exist')
   })
 

@@ -25,7 +25,7 @@ describe('<UserDropdown />', () => {
     userEvent.click(screen.getByText(/willian/i))
 
     // expect(
-    //   screen.getByRole('link', { name: /my profile/i })
+    //   screen.getByRole('link', { name: /meu perfil/i })
     // ).toBeInTheDocument()
 
     await waitFor(() => {
@@ -33,8 +33,6 @@ describe('<UserDropdown />', () => {
         screen.getByRole('link', { name: /wishlist/i })
       ).toBeInTheDocument()
     })
-    expect(
-      screen.getByRole('button', { name: /sign out/i })
-    ).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /sair/i })).toBeInTheDocument()
   })
 })

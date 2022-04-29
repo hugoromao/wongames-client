@@ -12,7 +12,7 @@ const Footer = () => (
     <S.Content>
       <S.Column>
         <Heading color="black" size="small" lineBottom lineColor="secondary">
-          Contact Us
+          Contato
         </Heading>
 
         <a href="mailto:sac@wongames.com">sac@wongames.com</a>
@@ -20,7 +20,7 @@ const Footer = () => (
 
       <S.Column aria-labelledby="social-media">
         <Heading color="black" lineColor="secondary" lineBottom size="small">
-          Follow us
+          Siga-nos
         </Heading>
 
         <nav id="social-media">
@@ -75,7 +75,7 @@ const Footer = () => (
 
       <S.Column aria-label="contact">
         <Heading color="black" lineColor="secondary" lineBottom size="small">
-          Location
+          Endereço
         </Heading>
         <span>Lorem ipsum dolor sit.</span>
         <span>Lorem Ipsum</span>
@@ -83,7 +83,9 @@ const Footer = () => (
       </S.Column>
     </S.Content>
 
-    <S.Copyright>Won Games {currentYear} © All rights reserved.</S.Copyright>
+    <S.Copyright>
+      Won Games {currentYear} © Todos os direitos reservados.
+    </S.Copyright>
   </S.Wrapper>
 )
 

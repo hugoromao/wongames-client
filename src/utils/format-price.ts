@@ -1,8 +1,8 @@
 export default function formatPrice(price: number | bigint): string {
-  if (price === 0) return 'FREE'
+  if (price === 0) return 'GRÁTIS'
 
-  return new Intl.NumberFormat('en', {
+  return new Intl.NumberFormat('pt', {
     style: 'currency',
-    currency: 'USD'
+    currency: 'BRL'
   }).format(price)
 }

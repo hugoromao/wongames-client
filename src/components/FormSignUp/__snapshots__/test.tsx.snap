@@ -288,18 +288,18 @@ exports[`<FormSignUp /> should render the form 1`] = `
       type="submit"
     >
       <span>
-        Sign up now
+        Inscrever-se
       </span>
     </button>
     <div
       class="c8"
     >
-      Already have an account?
+      Já tem uma conta?
        
       <a
         href="/sign-in"
       >
-        Sign in
+        Entrar
       </a>
     </div>
   </form>

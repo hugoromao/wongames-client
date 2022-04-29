@@ -93,7 +93,7 @@ exports[`<Empty /> should render correctly 1`] = `
         href="/"
       >
         <span>
-          Go back to store
+          Voltar para loja
         </span>
       </a>
     </div>

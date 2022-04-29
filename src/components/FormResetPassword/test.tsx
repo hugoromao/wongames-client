@@ -25,7 +25,7 @@ describe('<FormResetPassword>', () => {
     expect(screen.getByPlaceholderText('Password')).toBeInTheDocument()
     expect(screen.getByPlaceholderText(/confirm password/i)).toBeInTheDocument()
     expect(
-      screen.getByRole('button', { name: /reset password/i })
+      screen.getByRole('button', { name: /Alterar senha/i })
     ).toBeInTheDocument()
   })
 
@@ -35,7 +35,7 @@ describe('<FormResetPassword>', () => {
     await userEvent.type(screen.getByPlaceholderText('Password'), '123')
     await userEvent.type(screen.getByPlaceholderText(/confirm/i), '321')
 
-    userEvent.click(screen.getByRole('button', { name: /reset password/i }))
+    userEvent.click(screen.getByRole('button', { name: /Alterar senha/i }))
 
     expect(await screen.findByText(/confirm password does not match/i))
   })
@@ -47,7 +47,7 @@ describe('<FormResetPassword>', () => {
     await userEvent.type(screen.getByPlaceholderText('Password'), '123')
     await userEvent.type(screen.getByPlaceholderText(/confirm/i), '123')
 
-    userEvent.click(screen.getByRole('button', { name: /reset password/i }))
+    userEvent.click(screen.getByRole('button', { name: /Alterar senha/i }))
 
     expect(
       await screen.findByText(/Incorrect code provided/i)
@@ -62,7 +62,7 @@ describe('<FormResetPassword>', () => {
     await userEvent.type(screen.getByPlaceholderText('Password'), '123')
     await userEvent.type(screen.getByPlaceholderText(/confirm/i), '123')
 
-    userEvent.click(screen.getByRole('button', { name: /reset password/i }))
+    userEvent.click(screen.getByRole('button', { name: /Alterar senha/i }))
 
     await waitFor(() => {
       expect(signIn).toHaveBeenCalledWith('credentials', {

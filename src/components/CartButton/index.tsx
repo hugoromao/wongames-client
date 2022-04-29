@@ -16,7 +16,9 @@ const CartButton = ({
   hasText = false
 }: CartButtonProps) => {
   const { isInCart, addToCart, removeFromCart } = useCart()
-  const ButtonText = isInCart(id) ? 'Remove from cart' : 'Add to cart'
+  const ButtonText = isInCart(id)
+    ? 'Removar do carrinho'
+    : 'Adicionar no carrinho'
 
   return (
     <Button

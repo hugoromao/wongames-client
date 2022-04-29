@@ -98,7 +98,7 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
           ) : (
             <Empty
               title=":("
-              description="We didn't find any games with this filter"
+              description="Não encontramos nenhum jogo com este filtro"
               hasLink
             />
           )}

@@ -225,25 +225,25 @@ exports[`<FormSignIn /> should render the form 1`] = `
           class="c6"
           href="/forgot-password"
         >
-          Forgot your password?
+          Esqueceu sua senha?
         </a>
         <button
           class="c7 c8"
           type="submit"
         >
           <span>
-            Sign in now
+            Entrar agora!
           </span>
         </button>
         <div
           class="c9"
         >
-          Don’t have an account?
+          Não tem uma conta?
            
           <a
             href="/sign-up"
           >
-            Sign up
+            Inscreva-se
           </a>
         </div>
       </form>

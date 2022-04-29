@@ -40,8 +40,8 @@ describe('Cart', () => {
       .click()
 
     cy.getByDataCy('cart-list').within(() => {
-      // cy.findAllByRole('heading', { name: /your cart is empty/i, hidden: true }).should('exist')
-      cy.findAllByRole('heading', { name: /your cart is empty/i }).should(
+      // cy.findAllByRole('heading', { name: /Seu carrinho está vazio/i, hidden: true }).should('exist')
+      cy.findAllByRole('heading', { name: /Seu carrinho está vazio/i }).should(
         'exist'
       )
     })

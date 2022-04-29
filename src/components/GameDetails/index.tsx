@@ -36,20 +36,20 @@ const GameDetails = ({
     <S.Wrapper data-cy="game-details">
       <MediaMatch greaterThan="small">
         <Heading lineLeft lineColor="secondary">
-          Game Details
+          Detalhes
         </Heading>
       </MediaMatch>
 
       <S.Content>
         <S.Block>
-          <S.Label>Developer</S.Label>
+          <S.Label>Desenvolvedora</S.Label>
           <S.Description>{developer}</S.Description>
         </S.Block>
 
         <S.Block>
-          <S.Label>Release Date</S.Label>
+          <S.Label>Data de lançamento</S.Label>
           <S.Description>
-            {new Intl.DateTimeFormat('en-US', {
+            {new Intl.DateTimeFormat('pt-BR', {
               day: 'numeric',
               month: 'short',
               year: 'numeric'
@@ -58,7 +58,7 @@ const GameDetails = ({
         </S.Block>
 
         <S.Block>
-          <S.Label>Platforms</S.Label>
+          <S.Label>Plataformas</S.Label>
           <S.IconsWrapper>
             {platforms.map((icon: Platform) => (
               <S.Icon key={icon}>{platformIcons[icon]}</S.Icon>
@@ -72,14 +72,14 @@ const GameDetails = ({
         </S.Block>
 
         <S.Block>
-          <S.Label>Rating</S.Label>
+          <S.Label>Classificação Etária</S.Label>
           <S.Description>
             {rating === 'BR0' ? 'FREE' : `${rating.replace('BR', '')}+`}
           </S.Description>
         </S.Block>
 
         <S.Block>
-          <S.Label>Genres</S.Label>
+          <S.Label>Generos</S.Label>
           <S.Description>{genres.join(' / ')}</S.Description>
         </S.Block>
       </S.Content>

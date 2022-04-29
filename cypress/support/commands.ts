@@ -39,7 +39,7 @@ Cypress.Commands.add('signUp', (user: User) => {
   cy.findByPlaceholderText(/email/i).type(user.email)
   cy.findByPlaceholderText(/^senha/i).type(user.password)
   cy.findByPlaceholderText(/confirmar senha/i).type(user.password)
-  cy.findByRole('button', { name: /sign up now/i }).click()
+  cy.findByRole('button', { name: /Inscrever-se/i }).click()
 })
 
 Cypress.Commands.add(
@@ -48,7 +48,7 @@ Cypress.Commands.add(
     cy.url().should('contain', `${Cypress.config().baseUrl}sign-in`)
     cy.findByPlaceholderText(/email/i).type(email)
     cy.findByPlaceholderText(/^password/i).type(password)
-    cy.findByRole('button', { name: /sign in now/i }).click()
+    cy.findByRole('button', { name: /Entrar agora!/i }).click()
   }
 )
 
@@ -119,7 +119,7 @@ Cypress.Commands.add('addToCartByIndex', (index) => {
   cy.getByDataCy('game-card')
     .eq(index)
     .within(() => {
-      cy.findByRole('button', { name: /add to cart/i }).click()
+      cy.findByRole('button', { name: /Adicionar no carrinho/i }).click()
     })
 })
 

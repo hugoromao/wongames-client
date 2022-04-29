@@ -76,7 +76,7 @@ export const ordersMapper = (orders: QueryOrders_orders[]) => {
             number: order.card_last4
               ? `**** **** **** ${order.card_last4}`
               : 'Free Game',
-            purchaseDate: `Purchase made on ${new Intl.DateTimeFormat('en-US', {
+            purchaseDate: `Compra feita em ${new Intl.DateTimeFormat('pt-BR', {
               day: 'numeric',
               month: 'short',
               year: 'numeric'

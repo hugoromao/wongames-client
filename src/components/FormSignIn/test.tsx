@@ -21,7 +21,7 @@ describe('<FormSignIn />', () => {
     expect(screen.getByPlaceholderText(/email/i)).toBeInTheDocument()
     expect(screen.getByPlaceholderText(/password/i)).toBeInTheDocument()
     expect(
-      screen.getByRole('button', { name: /sign in now/i })
+      screen.getByRole('button', { name: /Entrar agora!/i })
     ).toBeInTheDocument()
 
     expect(container.parentElement).toMatchSnapshot()
@@ -31,14 +31,14 @@ describe('<FormSignIn />', () => {
     renderWithTheme(<FormSignIn />)
 
     expect(
-      screen.getByRole('link', { name: /forgot your password\?/i })
+      screen.getByRole('link', { name: /Esqueceu sua senha\?/i })
     ).toBeInTheDocument()
   })
 
   it('should render text to sign up if already have an account', () => {
     renderWithTheme(<FormSignIn />)
 
-    expect(screen.getByRole('link', { name: /sign up/i })).toBeInTheDocument()
-    expect(screen.getByText(/don’t have an account\?/i)).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /Inscreva-se/i })).toBeInTheDocument()
+    expect(screen.getByText(/Não tem uma conta\?/i)).toBeInTheDocument()
   })
 })

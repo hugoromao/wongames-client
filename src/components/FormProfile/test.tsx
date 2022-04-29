@@ -8,16 +8,16 @@ describe('<FormProfile />', () => {
     renderWithTheme(<FormProfile />)
 
     expect(
-      screen.getByRole('heading', { name: /my profile/i })
+      screen.getByRole('heading', { name: /meu perfil/i })
     ).toBeInTheDocument()
 
     expect(screen.getByRole('textbox', { name: /name/i })).toBeInTheDocument()
     expect(screen.getByRole('textbox', { name: /e-mail/i })).toBeInTheDocument()
 
     expect(
-      screen.getByRole('link', { name: /reset password/i })
+      screen.getByRole('link', { name: /Alterar senha/i })
     ).toBeInTheDocument()
 
-    expect(screen.getByRole('button', { name: /save/i })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /salvar/i })).toBeInTheDocument()
   })
 })

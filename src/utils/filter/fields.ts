@@ -1,10 +1,10 @@
 export const priceFields = [
-  { label: 'Free', name: 0 },
-  { label: 'Under $50', name: 50 },
-  { label: 'Under $100', name: 100 },
-  { label: 'Under $150', name: 150 },
-  { label: 'Under $250', name: 250 },
-  { label: 'Under $500', name: 500 }
+  { label: 'Grátis', name: 0 },
+  { label: 'Até R$ 50', name: 50 },
+  { label: 'Até R$ 100', name: 100 },
+  { label: 'Até R$ 150', name: 150 },
+  { label: 'Até R$ 250', name: 250 },
+  { label: 'Até R$ 500', name: 500 }
 ]
 
 export const platformFields = [

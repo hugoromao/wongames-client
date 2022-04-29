@@ -17,24 +17,28 @@ describe('<GameDetails />', () => {
     renderWithTheme(<GameDetails {...props} />)
 
     expect(
-      screen.getByRole('heading', { name: /developer/i })
+      screen.getByRole('heading', { name: /desenvolvedora/i })
     ).toBeInTheDocument()
 
     expect(
-      screen.getByRole('heading', { name: /release date/i })
+      screen.getByRole('heading', { name: /data de lançamento/i })
     ).toBeInTheDocument()
 
     expect(
-      screen.getByRole('heading', { name: /platforms/i })
+      screen.getByRole('heading', { name: /plataformas/i })
     ).toBeInTheDocument()
 
     expect(
       screen.getByRole('heading', { name: /publisher/i })
     ).toBeInTheDocument()
 
-    expect(screen.getByRole('heading', { name: /rating/i })).toBeInTheDocument()
+    expect(
+      screen.getByRole('heading', { name: /Classificação Etária/i })
+    ).toBeInTheDocument()
 
-    expect(screen.getByRole('heading', { name: /genres/i })).toBeInTheDocument()
+    expect(
+      screen.getByRole('heading', { name: /Generos/i })
+    ).toBeInTheDocument()
   })
 
   it('should render platform icons', () => {
@@ -72,7 +76,7 @@ describe('<GameDetails />', () => {
   it('should render the formated date', () => {
     renderWithTheme(<GameDetails {...props} />)
 
-    expect(screen.getByText('Nov 21, 2020')).toBeInTheDocument()
+    expect(screen.getByText('21 de nov. de 2020')).toBeInTheDocument()
   })
 
   it('should render a list of genres', () => {

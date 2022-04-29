@@ -80,17 +80,17 @@ const FormSignIn = () => {
         />
 
         <Link href="/forgot-password" passHref>
-          <S.ForgotPassword>Forgot your password?</S.ForgotPassword>
+          <S.ForgotPassword>Esqueceu sua senha?</S.ForgotPassword>
         </Link>
 
         <Button size="large" fullWidth type="submit" disabled={loading}>
-          {loading ? <FormLoading /> : 'Sign in now'}
+          {loading ? <FormLoading /> : 'Entrar agora!'}
         </Button>
 
         <FormLink>
-          Don’t have an account?{' '}
+          Não tem uma conta?{' '}
           <Link href="/sign-up">
-            <a>Sign up</a>
+            <a>Inscreva-se</a>
           </Link>
         </FormLink>
       </form>

@@ -23,7 +23,7 @@ describe('<OrdersList />', () => {
     renderWithTheme(<OrdersList items={mock} />)
 
     expect(
-      screen.getByRole('heading', { name: /my orders/i })
+      screen.getByRole('heading', { name: /meus pedidos/i })
     ).toBeInTheDocument()
 
     expect(screen.getAllByTestId('Mock GameItem')).toHaveLength(2)

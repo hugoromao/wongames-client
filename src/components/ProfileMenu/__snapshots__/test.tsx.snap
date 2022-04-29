@@ -78,7 +78,7 @@ exports[`<ProfileMenu /> should render the menu 1`] = `
   <a
     class="c1"
     href="/profile/me"
-    title="My profile"
+    title="Meu perfil"
   >
     <svg
       aria-hidden="true"
@@ -99,13 +99,13 @@ exports[`<ProfileMenu /> should render the menu 1`] = `
       />
     </svg>
     <span>
-      My profile
+      Meu perfil
     </span>
   </a>
   <a
     class="c1"
     href="/profile/orders"
-    title="My orders"
+    title="Meus pedidos"
   >
     <svg
       aria-hidden="true"
@@ -126,7 +126,7 @@ exports[`<ProfileMenu /> should render the menu 1`] = `
       />
     </svg>
     <span>
-      My orders
+      Meus pedidos
     </span>
   </a>
   <a
@@ -144,7 +144,7 @@ exports[`<ProfileMenu /> should render the menu 1`] = `
       xmlns="http://www.w3.org/2000/svg"
     >
       <title>
-        Sign out
+        Sair
       </title>
       <path
         d="M0 0h24v24H0V0z"
@@ -155,7 +155,7 @@ exports[`<ProfileMenu /> should render the menu 1`] = `
       />
     </svg>
     <span>
-      Sign out
+      Sair
     </span>
   </a>
 </nav>

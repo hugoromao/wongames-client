@@ -6,7 +6,7 @@ describe('Reset Password', () => {
 
     cy.findAllByPlaceholderText(/^password/i).type('123')
     cy.findAllByPlaceholderText(/confirm password/i).type('321')
-    cy.findByRole('button', { name: /reset password/i }).click()
+    cy.findByRole('button', { name: /Alterar senha/i }).click()
 
     cy.findByText(/confirm password does not match with password/i).should(
       'exist'
@@ -36,7 +36,7 @@ describe('Reset Password', () => {
 
     cy.findAllByPlaceholderText(/^password/i).type('123')
     cy.findAllByPlaceholderText(/confirm password/i).type('123')
-    cy.findByRole('button', { name: /reset password/i }).click()
+    cy.findByRole('button', { name: /Alterar senha/i }).click()
 
     cy.findByText(/Incorrect code provided/i).should('exist')
   })
@@ -65,7 +65,7 @@ describe('Reset Password', () => {
     // preencher as senhas (já com o token válido)
     cy.findAllByPlaceholderText(/^password/i).type('pass123')
     cy.findAllByPlaceholderText(/confirm password/i).type('pass123')
-    cy.findByRole('button', { name: /reset password/i }).click()
+    cy.findByRole('button', { name: /Alterar senha/i }).click()
 
     // redireciona para home
     cy.url().should('eq', `${Cypress.config().baseUrl}`)

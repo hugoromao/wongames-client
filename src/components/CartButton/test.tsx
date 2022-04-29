@@ -15,7 +15,7 @@ describe('<CartButton />', () => {
       cartProviderProps
     })
 
-    const button = screen.getByLabelText(/add to cart/i)
+    const button = screen.getByLabelText(/Adicionar no carrinho/i)
 
     expect(button).toBeInTheDocument()
 
