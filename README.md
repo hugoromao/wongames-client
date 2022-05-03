@@ -19,11 +19,9 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <div style="background-color: #030517; width: fit-content; padding: 2rem 4rem; border-radius: 0.5rem;">
     <a href="http://wongames-client-drab.vercel.app/">
-      <img src="public/readme/White.svg  " alt="Logo" height="180" >
+      <img src="public/readme/Thumb.svg" alt="Logo" height="280" style="border-radius: 0.5rem;">
     </a>
-  </div>
   <h3 align="center">WON Games -Todos os seus jogos favoritos em um só lugar</h3>
 
   <p align="center">
