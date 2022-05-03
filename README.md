@@ -56,8 +56,8 @@
 ## Sobre o projeto
 
 <div align="center">
-  <img src="public/readme/home.png" alt="Logo" height="450">
-  <img src="public/readme/signin.png" alt="Logo" height="450">
+  <img src="public/readme/home.png" alt="Logo" style="width: 100%;">
+  <img src="public/readme/signin.png" alt="Logo" style="width: 100%;">
 </div>
 
 A Won Games é uma plataforma e-commerce de jogos desenvolvida utilizando as melhores ferramentas e práticas do mercado. Com suporte a pagamentos e área do cliente, a Won Games utiliza como principal tecnologias o NextJS, Strapi, GraphQL e muito mais! Foi construída durante o curso de React Avançado, onde fui mentorado pelos professores Willian Justen e Guilherme Louro.
