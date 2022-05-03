@@ -20,7 +20,7 @@
 <br />
 <div align="center">
     <a href="http://wongames-client-drab.vercel.app/">
-      <img src="public/readme/Thumb.svg" alt="Logo" height="280" style="border-radius: 0.5rem;">
+      <img src="public/readme/Thumb.png" alt="Logo" height="280" style="border-radius: 0.5rem;">
     </a>
   <h3 align="center">WON Games -Todos os seus jogos favoritos em um só lugar</h3>
 
